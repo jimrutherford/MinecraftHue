@@ -7,12 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Sky.h"
+
 
 @interface ViewController : UIViewController
 - (IBAction)buttonTouched:(id)sender;
 
 @property (weak, nonatomic) IBOutlet UIImageView *moon;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
+
+@property (strong, nonatomic) Sky *sky;
 
 
 @end

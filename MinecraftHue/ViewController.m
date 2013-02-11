@@ -8,9 +8,11 @@
 
 #import "ViewController.h"
 #import <QuartzCore/QuartzCore.h>
+#import "Sky.h"
 
 #define totalMinutes 1440
 #define ScreenWidth [[UIScreen mainScreen] bounds].size.width
+#define ScreenHeight [[UIScreen mainScreen] bounds].size.height
 
 @interface ViewController ()
 
@@ -19,6 +21,7 @@
 @implementation ViewController
 
 @synthesize moon;
+@synthesize sky;
 
 float minutesInPixel;
 
@@ -34,8 +37,20 @@ float minutesInPixel;
 	
 	currentMinute = 0.0f;
 	[self updateTimeLabel];
+    [self positionMoon];
+    
 	minutesInPixel = totalMinutes/ScreenWidth;
-	
+
+    CGRect skyRect = CGRectMake(0, 0, ScreenHeight, ScreenWidth - 200);
+
+    sky = [[Sky alloc] initWithFrame:skyRect];
+    sky.startColor = [UIColor redColor];
+    sky.endColor = [UIColor blueColor];
+    [self.view addSubview:sky];
+    [self.view sendSubviewToBack:sky];
+
+    
+
 }
 
 float lastX;
@@ -70,9 +85,19 @@ int currentMinute;
 		lastX = currentX;
 		
 		[self updateTimeLabel];
+        [self positionMoon];
 	}
 	
 }
+
+-(void) positionMoon
+{
+    CGRect moonFrame = moon.frame;
+
+    moonFrame.origin.y = ScreenWidth - 300 - currentMinute;
+    moon.frame = moonFrame;
+}
+
 
 - (void) updateTimeLabel
 {
@@ -94,8 +119,10 @@ int currentMinute;
 }
 
 - (IBAction)buttonTouched:(id)sender {
-	
-	
+
+    sky.startColor = [UIColor yellowColor];
+
+	return;
 	
 	
 	moon.alpha = 1.0f;

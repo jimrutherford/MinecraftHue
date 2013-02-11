@@ -22,6 +22,7 @@
 		37898F5E16C82A1000F0B732 /* Moon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 37898F5C16C82A1000F0B732 /* Moon@2x.png */; };
 		37898F5F16C82A1000F0B732 /* Sun@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 37898F5D16C82A1000F0B732 /* Sun@2x.png */; };
 		37898F6116C832B600F0B732 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37898F6016C832B600F0B732 /* QuartzCore.framework */; };
+		37D99B6116C85E6F00225C92 /* Sky.m in Sources */ = {isa = PBXBuildFile; fileRef = 37D99B6016C85E6F00225C92 /* Sky.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,8 @@
 		37898F5C16C82A1000F0B732 /* Moon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Moon@2x.png"; path = "Resources/Images/Moon@2x.png"; sourceTree = "<group>"; };
 		37898F5D16C82A1000F0B732 /* Sun@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Sun@2x.png"; path = "Resources/Images/Sun@2x.png"; sourceTree = "<group>"; };
 		37898F6016C832B600F0B732 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		37D99B5F16C85E6F00225C92 /* Sky.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Sky.h; path = Classes/Sky.h; sourceTree = "<group>"; };
+		37D99B6016C85E6F00225C92 /* Sky.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Sky.m; path = Classes/Sky.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +96,7 @@
 		37898F3316C81ABE00F0B732 /* MinecraftHue */ = {
 			isa = PBXGroup;
 			children = (
+				37D99B5E16C85E3400225C92 /* Classes */,
 				37898F5016C8213B00F0B732 /* Resources */,
 				37898F3C16C81ABE00F0B732 /* AppDelegate.h */,
 				37898F3D16C81ABE00F0B732 /* AppDelegate.m */,
@@ -134,6 +138,15 @@
 				37898F5616C8217A00F0B732 /* appBG@2x.png */,
 			);
 			name = Images;
+			sourceTree = "<group>";
+		};
+		37D99B5E16C85E3400225C92 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				37D99B5F16C85E6F00225C92 /* Sky.h */,
+				37D99B6016C85E6F00225C92 /* Sky.m */,
+			);
+			name = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -208,6 +221,7 @@
 				37898F3A16C81ABE00F0B732 /* main.m in Sources */,
 				37898F3E16C81ABE00F0B732 /* AppDelegate.m in Sources */,
 				37898F4716C81ABE00F0B732 /* ViewController.m in Sources */,
+				37D99B6116C85E6F00225C92 /* Sky.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -332,6 +346,7 @@
 				37898F4F16C81ABE00F0B732 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
