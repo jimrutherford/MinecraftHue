@@ -222,6 +222,10 @@ BOOL isPanning;
 	
 }
 
+int oldIndex = -1;
+bool daylightSet = NO;
+bool nightlightSet = NO;
+
 - (void) animateMoonSun
 {
 	NSString *dayPart = [self timeOfDayWord];
@@ -230,18 +234,33 @@ BOOL isPanning;
 	
 	if ([dayPart isEqualToString:dayPartDay])
 	{
+		oldIndex = -1;
 		self.sun.alpha = 1;
 		sky.startColor = [startColors objectAtIndex:14];
 		sky.endColor = [endColors objectAtIndex:14];
 		[self positionSun:percentComplete];
+		
+		if (!daylightSet)
+		{
+			[self changeHueWithIndex:14];
+			daylightSet = YES;
+		}
+		
 	}
 	
 	if ([dayPart isEqualToString:dayPartNight])
 	{
+		oldIndex = -1;
 		self.moon.alpha = 1;
 		sky.startColor = [startColors objectAtIndex:0];
 		sky.endColor = [endColors objectAtIndex:0];
 		[self positionMoon:percentComplete];
+		
+		if (!nightlightSet)
+		{
+			[self changeHueWithIndex:0];
+			nightlightSet = YES;
+		}
 	}
 	
 	if ([dayPart isEqualToString:dayPartSunrise]) 
@@ -249,11 +268,20 @@ BOOL isPanning;
 		
 		int index = (minutesInto / 9.0) + 1;
 		
+		if (index != oldIndex)
+		{
+			[self changeHueWithIndex:index];
+			oldIndex = index;
+		}
+		
 		sky.startColor = [startColors objectAtIndex:index];
 		sky.endColor = [endColors objectAtIndex:index];
 
 		self.sun.alpha = 0;
 		self.moon.alpha = 0;
+		
+		daylightSet = NO;
+		nightlightSet = NO;
 	}
 	
 	if ([dayPart isEqualToString:dayPartSunset])
@@ -262,13 +290,54 @@ BOOL isPanning;
 		
 		sky.startColor = [startColors objectAtIndex:index];
 		sky.endColor = [endColors objectAtIndex:index];
-
+		
+		if (index != oldIndex)
+		{
+			[self changeHueWithIndex:index];
+			oldIndex = index;
+		}
 		
 		self.sun.alpha = 0;
 		self.moon.alpha = 0;
+		
+		daylightSet = NO;
+		nightlightSet = NO;
 	}
 	
 
+}
+
+- (void) changeHueWithIndex:(int)index
+{
+	
+	if (!isPanning)
+	{
+		DPHue *someHue = [[DPHue alloc] initWithHueHost:host username:username];
+		[someHue readWithCompletion:^(DPHue *hue, NSError *err) {
+			//[hue allLightsOn];
+			NSLog(@"found %i lights", [hue.lights count]);
+			DPHueLight *light = [hue.lights objectAtIndex:1];
+			NSLog(@"Hue: %i, saturation: %i, brightness: %i", [light.hue integerValue], [light.saturation integerValue], [light.brightness integerValue]);
+			
+			UIColor * color = [endColors objectAtIndex:index];
+			CGFloat h;
+			CGFloat s;
+			CGFloat b;
+			CGFloat alpha;
+			[color getHue:&h saturation:&s brightness:&b alpha:&alpha];
+			
+			int hu = (h * 256) * 182.0;
+			int sat = s * 256;
+			int bright = b * 256;
+			
+			light.hue = [NSNumber numberWithInteger:hu];
+			light.saturation = [NSNumber numberWithInteger:sat];
+			light.brightness = [NSNumber numberWithInteger:bright];
+			[light write];
+			
+		}];
+	}
+	
 }
 
 -(void) positionSun:(double)percentComplete
@@ -415,26 +484,6 @@ BOOL isPanning;
 	self.timeLabel.text = [NSString stringWithFormat:@"%i:%@",currentMinute/60, minutes];
 }
 
-- (void) queryLights
-{
-	NSLog(@"found %i lights", [self.touchlinkHue.lights count]);
-	
-	DPHue *someHue = [[DPHue alloc] initWithHueHost:host username:username];
-    [someHue readWithCompletion:^(DPHue *hue, NSError *err) {
-        //[hue allLightsOn];
-		NSLog(@"found %i lights", [hue.lights count]);
-		DPHueLight *light = [hue.lights objectAtIndex:1];
-		NSLog(@"Hue: %i, saturation: %i, brightness: %i", [light.hue integerValue], [light.saturation integerValue], [light.brightness integerValue]);
-		
-		
-		light.hue = [NSNumber numberWithInteger:50414];
-		light.saturation = @196;
-		light.brightness = @255;
-		[light write];
-		
-    }];
-	
-}
 
 
 #pragma mark - DPHueDiscover delegate
@@ -463,8 +512,8 @@ BOOL isPanning;
             self.foundHueHost = hue.host;
             NSLog(@"Found Hue at %@, named '%@'!", hue.host, hue.name);
 			
-			[self queryLights];
-			
+			[self animateMoonSun];
+			[self changeHueWithIndex:0];
         } else {
             NSLog(@"%@: Authentication failed, will try to create username\n", [NSDate date]);
             [someHue registerUsername];
