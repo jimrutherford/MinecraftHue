@@ -1,0 +1,14 @@
+
+COCOAPODS: 0.16.2
+
+DEPENDENCIES: 
+- DPHue (~> 0.0.1)
+
+SPEC CHECKSUMS: 
+  DPHue: 61b09a9eb1564905327ff664e7201bfeeb60efaf
+  CocoaAsyncSocket: 70f5de3c1ba13526c23df75fc98a0ea3049aa19c
+
+PODS: 
+- CocoaAsyncSocket (0.0.1)
+- DPHue (0.0.1): 
+  - CocoaAsyncSocket (~> 0.0.1)
