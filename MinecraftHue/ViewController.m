@@ -44,6 +44,7 @@
 @synthesize sky;
 @synthesize startColors;
 @synthesize endColors;
+@synthesize hues;
 
 float minutesInPixel;
 
@@ -70,73 +71,102 @@ NSString *host;
 
     sky = [[Sky alloc] initWithFrame:skyRect];
 	
+	NSDictionary *dict;
 	startColors = [NSMutableArray array];
 	endColors = [NSMutableArray array];
+	hues = [NSMutableArray array];
+
+
 	// 0 night
 	[startColors addObject: [UIColor colorWithHue:0.84f saturation:0.68f brightness:0.00f alpha:1.00f]];
 	[endColors addObject: [UIColor colorWithHue:0.66f saturation:0.71f brightness:0.04f alpha:1.00f]];
+	dict = @{ @"h" : @47103, @"s" : @254, @"b" : @61 };
+	[hues addObject:dict];
 	
 	// 1
 	[startColors addObject: [UIColor colorWithHue:0.84f saturation:0.68f brightness:0.00f alpha:1.00f]];
 	[endColors addObject: [UIColor colorWithHue:0.97f saturation:0.59f brightness:0.18f alpha:1.00f]];
+	dict = @{ @"h" : @272, @"s" : @234, @"b" : @10 };
+	[hues addObject:dict];
 	
 	// 2
 	[startColors addObject: [UIColor colorWithHue:0.84f saturation:0.68f brightness:0.00f alpha:1.00f]];
 	[endColors addObject: [UIColor colorWithHue:0.00f saturation:0.65f brightness:0.37f alpha:1.00f]];
+	dict = @{ @"h" : @272, @"s" : @234, @"b" : @70 };
+	[hues addObject:dict];
 	
 	// 3
 	[startColors addObject: [UIColor colorWithHue:0.88f saturation:0.51f brightness:0.13f alpha:1.00f]];
 	[endColors addObject: [UIColor colorWithHue:0.01f saturation:0.60f brightness:0.55f alpha:1.00f]];
+	dict = @{ @"h" : @272, @"s" : @234, @"b" : @140 };
+	[hues addObject:dict];
 	
 	// 4
 	[startColors addObject: [UIColor colorWithHue:0.66f saturation:0.24f brightness:0.28f alpha:1.00f]];
 	[endColors addObject: [UIColor colorWithHue:0.03f saturation:0.65f brightness:0.71f alpha:1.00f]];
+	dict = @{ @"h" : @5237, @"s" : @242, @"b" : @180 };
+	[hues addObject:dict];
 	
 	// 5
 	[startColors addObject: [UIColor colorWithHue:0.65f saturation:0.31f brightness:0.40f alpha:1.00f]];
 	[endColors addObject: [UIColor colorWithHue:0.04f saturation:0.66f brightness:0.78f alpha:1.00f]];
+	dict = @{ @"h" : @4948, @"s" : @241, @"b" : @255 };
+	[hues addObject:dict];
 	
 	// 6
 	[startColors addObject: [UIColor colorWithHue:0.66f saturation:0.28f brightness:0.49f alpha:1.00f]];
 	[endColors addObject: [UIColor colorWithHue:0.05f saturation:0.68f brightness:0.83f alpha:1.00f]];
+	dict = @{ @"h" : @9940, @"s" : @239, @"b" : @255 };
+	[hues addObject:dict];
 	
 	// 7
 	[startColors addObject: [UIColor colorWithHue:0.64f saturation:0.32f brightness:0.60f alpha:1.00f]];
 	[endColors addObject: [UIColor colorWithHue:0.06f saturation:0.69f brightness:0.86f alpha:1.00f]];
+	dict = @{ @"h" : @10470, @"s" : @171, @"b" : @255 };
+	[hues addObject:dict];
 	
 	// 8
 	[startColors addObject: [UIColor colorWithHue:0.62f saturation:0.42f brightness:0.72f alpha:1.00f]];
 	[endColors addObject: [UIColor colorWithHue:0.07f saturation:0.61f brightness:0.84f alpha:1.00f]];
+	dict = @{ @"h" : @14958, @"s" : @241, @"b" : @255 };
+	[hues addObject:dict];
 	
 	// 9
 	[startColors addObject: [UIColor colorWithHue:0.62f saturation:0.36f brightness:0.77f alpha:1.00f]];
 	[endColors addObject: [UIColor colorWithHue:0.07f saturation:0.51f brightness:0.84f alpha:1.00f]];
+	dict = @{ @"h" : @14133, @"s" : @179, @"b" : @255 };
+	[hues addObject:dict];
 	
 	// 10
 	[startColors addObject: [UIColor colorWithHue:0.62f saturation:0.40f brightness:0.89f alpha:1.00f]];
 	[endColors addObject: [UIColor colorWithHue:0.08f saturation:0.38f brightness:0.82f alpha:1.00f]];
+	dict = @{ @"h" : @15894, @"s" : @83, @"b" : @255 };
+	[hues addObject:dict];
 	
 	// 11
 	[startColors addObject: [UIColor colorWithHue:0.62f saturation:0.39f brightness:0.98f alpha:1.00f]];
 	[endColors addObject: [UIColor colorWithHue:0.08f saturation:0.11f brightness:0.81f alpha:1.00f]];
+	dict = @{ @"h" : @16350, @"s" : @45, @"b" : @255 };
+	[hues addObject:dict];
 	
 	// 12
 	[startColors addObject: [UIColor colorWithHue:0.61f saturation:0.36f brightness:1.00f alpha:1.00f]];
 	[endColors addObject: [UIColor colorWithHue:0.60f saturation:0.08f brightness:0.85f alpha:1.00f]];
+	dict = @{ @"h" : @33837, @"s" : @10, @"b" : @255 };
+	[hues addObject:dict];
+	
 	
 	// 13
 	[startColors addObject: [UIColor colorWithHue:0.61f saturation:0.41f brightness:1.00f alpha:1.00f]];
 	[endColors addObject: [UIColor colorWithHue:0.61f saturation:0.19f brightness:0.93f alpha:1.00f]];
+	dict = @{ @"h" : @34515, @"s" : @236, @"b" : @255 };
+	[hues addObject:dict];
 	
 	// 14 day
 	[startColors addObject: [UIColor colorWithHue:0.61f saturation:0.42f brightness:1.00f alpha:1.00f]];
 	[endColors addObject: [UIColor colorWithHue:0.61f saturation:0.27f brightness:0.99f alpha:1.00f]];
-	
-	
-	
-	
-	
-	
+	dict = @{ @"h" : @34515, @"s" : @236, @"b" : @255 };
+	[hues addObject:dict];
 	
     sky.startColor = [startColors objectAtIndex:14];
     sky.endColor = [endColors objectAtIndex:14];
@@ -315,25 +345,19 @@ bool nightlightSet = NO;
 		DPHue *someHue = [[DPHue alloc] initWithHueHost:host username:username];
 		[someHue readWithCompletion:^(DPHue *hue, NSError *err) {
 			//[hue allLightsOn];
-			NSLog(@"found %i lights", [hue.lights count]);
-			DPHueLight *light = [hue.lights objectAtIndex:1];
-			NSLog(@"Hue: %i, saturation: %i, brightness: %i", [light.hue integerValue], [light.saturation integerValue], [light.brightness integerValue]);
+			//NSLog(@"found %i lights", [hue.lights count]);
 			
-			UIColor * color = [endColors objectAtIndex:index];
-			CGFloat h;
-			CGFloat s;
-			CGFloat b;
-			CGFloat alpha;
-			[color getHue:&h saturation:&s brightness:&b alpha:&alpha];
+			//NSLog(@"Hue: %i, saturation: %i, brightness: %i", [light.hue integerValue], [light.saturation integerValue], [light.brightness integerValue]);
 			
-			int hu = (h * 256) * 182.0;
-			int sat = s * 256;
-			int bright = b * 256;
+			NSDictionary *dict = [hues objectAtIndex:index];
 			
-			light.hue = [NSNumber numberWithInteger:hu];
-			light.saturation = [NSNumber numberWithInteger:sat];
-			light.brightness = [NSNumber numberWithInteger:bright];
-			[light write];
+			for (DPHueLight *light in hue.lights)
+			{
+				light.hue = [dict objectForKey:@"h"];
+				light.saturation = [dict objectForKey:@"s"];
+				light.brightness = [dict objectForKey:@"b"];
+				[light write];
+			}
 			
 		}];
 	}
@@ -520,6 +544,8 @@ bool nightlightSet = NO;
         }
     }];
 }
+
+
 
 
 - (void)discoveryTimeHasElapsed {

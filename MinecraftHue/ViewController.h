@@ -25,7 +25,7 @@
 
 @property (nonatomic, strong) NSMutableArray *startColors;
 @property (nonatomic, strong) NSMutableArray *endColors;
-
+@property (nonatomic, strong) NSMutableArray *hues;
 @property (strong, nonatomic) Sky *sky;
 
 
