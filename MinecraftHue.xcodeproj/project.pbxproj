@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3749EC5416E50B3A002C76EA /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3749EC5216E50B3A002C76EA /* SettingsViewController.m */; };
+		3749EC5516E50B3A002C76EA /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3749EC5316E50B3A002C76EA /* SettingsViewController.xib */; };
+		3749EC5716E50B74002C76EA /* settingsBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3749EC5616E50B74002C76EA /* settingsBG@2x.png */; };
+		3749EC5916E5106E002C76EA /* config@2x.fw.png in Resources */ = {isa = PBXBuildFile; fileRef = 3749EC5816E5106E002C76EA /* config@2x.fw.png */; };
+		3749EC5C16E51210002C76EA /* NVSlideMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3749EC5B16E51210002C76EA /* NVSlideMenuController.m */; };
+		3749EC5E16E51D71002C76EA /* WoolButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3749EC5D16E51D71002C76EA /* WoolButton@2x.png */; };
 		37898F2E16C81ABE00F0B732 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37898F2D16C81ABE00F0B732 /* UIKit.framework */; };
 		37898F3016C81ABE00F0B732 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37898F2F16C81ABE00F0B732 /* Foundation.framework */; };
 		37898F3216C81ABE00F0B732 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37898F3116C81ABE00F0B732 /* CoreGraphics.framework */; };
@@ -31,6 +37,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3749EC5116E50B3A002C76EA /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		3749EC5216E50B3A002C76EA /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		3749EC5316E50B3A002C76EA /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
+		3749EC5616E50B74002C76EA /* settingsBG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "settingsBG@2x.png"; path = "Resources/Images/settingsBG@2x.png"; sourceTree = "<group>"; };
+		3749EC5816E5106E002C76EA /* config@2x.fw.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "config@2x.fw.png"; path = "Resources/Images/config@2x.fw.png"; sourceTree = "<group>"; };
+		3749EC5A16E51210002C76EA /* NVSlideMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NVSlideMenuController.h; sourceTree = "<group>"; };
+		3749EC5B16E51210002C76EA /* NVSlideMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NVSlideMenuController.m; sourceTree = "<group>"; };
+		3749EC5D16E51D71002C76EA /* WoolButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "WoolButton@2x.png"; path = "Resources/Images/WoolButton@2x.png"; sourceTree = "<group>"; };
 		37898F2A16C81ABE00F0B732 /* MinecraftHue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MinecraftHue.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		37898F2D16C81ABE00F0B732 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		37898F2F16C81ABE00F0B732 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -77,6 +91,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3749EC5016E5060E002C76EA /* NVSlideMenuController */ = {
+			isa = PBXGroup;
+			children = (
+				3749EC5A16E51210002C76EA /* NVSlideMenuController.h */,
+				3749EC5B16E51210002C76EA /* NVSlideMenuController.m */,
+			);
+			name = NVSlideMenuController;
+			sourceTree = "<group>";
+		};
 		37898F2116C81ABE00F0B732 = {
 			isa = PBXGroup;
 			children = (
@@ -122,6 +145,9 @@
 				37898F4616C81ABE00F0B732 /* ViewController.m */,
 				37898F4816C81ABE00F0B732 /* ViewController.xib */,
 				37898F3416C81ABE00F0B732 /* Supporting Files */,
+				3749EC5116E50B3A002C76EA /* SettingsViewController.h */,
+				3749EC5216E50B3A002C76EA /* SettingsViewController.m */,
+				3749EC5316E50B3A002C76EA /* SettingsViewController.xib */,
 			);
 			path = MinecraftHue;
 			sourceTree = "<group>";
@@ -151,6 +177,9 @@
 		37898F5116C8214200F0B732 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				3749EC5D16E51D71002C76EA /* WoolButton@2x.png */,
+				3749EC5816E5106E002C76EA /* config@2x.fw.png */,
+				3749EC5616E50B74002C76EA /* settingsBG@2x.png */,
 				37898F5C16C82A1000F0B732 /* Moon@2x.png */,
 				37898F5D16C82A1000F0B732 /* Sun@2x.png */,
 				37898F5616C8217A00F0B732 /* appBG@2x.png */,
@@ -161,6 +190,7 @@
 		37D99B5E16C85E3400225C92 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				3749EC5016E5060E002C76EA /* NVSlideMenuController */,
 				37D99B5F16C85E6F00225C92 /* Sky.h */,
 				37D99B6016C85E6F00225C92 /* Sky.m */,
 			);
@@ -231,6 +261,10 @@
 				37B21E1516CEEF00007F6256 /* Icon-72@2x.png in Resources */,
 				37B21E1716CEF3B9007F6256 /* Default-Landscape@2x~ipad.png in Resources */,
 				37B21E1916CEF3BE007F6256 /* Default-Landscape~ipad.png in Resources */,
+				3749EC5516E50B3A002C76EA /* SettingsViewController.xib in Resources */,
+				3749EC5716E50B74002C76EA /* settingsBG@2x.png in Resources */,
+				3749EC5916E5106E002C76EA /* config@2x.fw.png in Resources */,
+				3749EC5E16E51D71002C76EA /* WoolButton@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,6 +296,8 @@
 				37898F3E16C81ABE00F0B732 /* AppDelegate.m in Sources */,
 				37898F4716C81ABE00F0B732 /* ViewController.m in Sources */,
 				37D99B6116C85E6F00225C92 /* Sky.m in Sources */,
+				3749EC5416E50B3A002C76EA /* SettingsViewController.m in Sources */,
+				3749EC5C16E51210002C76EA /* NVSlideMenuController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,6 +10,7 @@
 #import "Sky.h"
 #import <DPHue/DPHueDiscover.h>
 #import <DPHue/DPHue.h>
+#import "NVSlideMenuController.h"
 
 @interface ViewController : UIViewController<DPHueDiscoverDelegate>
 
@@ -27,6 +28,11 @@
 @property (nonatomic, strong) NSMutableArray *endColors;
 @property (nonatomic, strong) NSMutableArray *hues;
 @property (strong, nonatomic) Sky *sky;
+
+@property (weak, nonatomic) IBOutlet UIButton *configButton;
+- (IBAction)configButtonTouched:(UIButton *)sender;
+
+@property (strong, nonatomic)  NVSlideMenuController *slideMenuController;
 
 
 @end

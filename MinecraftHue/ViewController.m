@@ -11,6 +11,8 @@
 #import "Sky.h"
 #import <DPHue/DPHue.h>
 #import <DPHue/DPHueLight.h>
+#import	"AppDelegate.h"
+#import "NVSlideMenuController.h"
 
 #define totalMinutes 1440
 #define ScreenWidth [[UIScreen mainScreen] bounds].size.width
@@ -45,6 +47,7 @@
 @synthesize startColors;
 @synthesize endColors;
 @synthesize hues;
+@synthesize slideMenuController;
 
 float minutesInPixel;
 
@@ -55,6 +58,12 @@ NSString *host;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+	
+	AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+	
+	slideMenuController = appDelegate.slideMenuController;
+	slideMenuController.panGestureEnabled = NO;
+	slideMenuController.contentViewWidthWhenMenuIsOpen = 700;
 	
 	UIPanGestureRecognizer *panGestureRecognizer = [[UIPanGestureRecognizer alloc]
                                                      initWithTarget:self
@@ -563,4 +572,15 @@ bool nightlightSet = NO;
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)configButtonTouched:(UIButton *)sender {
+	
+	if (slideMenuController.isMenuOpen)
+	{
+		[slideMenuController showContentViewControllerAnimated:YES completion:^(BOOL finished){
+			slideMenuController.panGestureEnabled = NO;
+		}];
+	} else {
+		[slideMenuController showMenuAnimated:YES completion:nil];
+	}
+}
 @end

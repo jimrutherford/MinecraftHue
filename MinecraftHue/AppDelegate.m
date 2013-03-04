@@ -7,8 +7,9 @@
 //
 
 #import "AppDelegate.h"
-
+#import "NVSlideMenuController.h"
 #import "ViewController.h"
+#import "SettingsViewController.h"
 
 @implementation AppDelegate
 
@@ -16,8 +17,15 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-	self.viewController = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
-	self.window.rootViewController = self.viewController;
+	self.contentViewController = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
+	
+	self.contentViewController = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
+	self.menuViewController = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil];
+	
+	self.slideMenuController = [[NVSlideMenuController alloc] initWithMenuViewController:self.menuViewController andContentViewController:self.contentViewController];
+	
+	self.window.rootViewController = self.slideMenuController;
+	
     [self.window makeKeyAndVisible];
     return YES;
 }
