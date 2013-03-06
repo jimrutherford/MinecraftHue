@@ -13,6 +13,8 @@
 		3749EC5916E5106E002C76EA /* config@2x.fw.png in Resources */ = {isa = PBXBuildFile; fileRef = 3749EC5816E5106E002C76EA /* config@2x.fw.png */; };
 		3749EC5C16E51210002C76EA /* NVSlideMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3749EC5B16E51210002C76EA /* NVSlideMenuController.m */; };
 		3749EC5E16E51D71002C76EA /* WoolButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3749EC5D16E51D71002C76EA /* WoolButton@2x.png */; };
+		3749EC6216E55360002C76EA /* Toast+UIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3749EC6116E55360002C76EA /* Toast+UIView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		3749EC6416E554A5002C76EA /* toastIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3749EC6316E554A5002C76EA /* toastIcon@2x.png */; };
 		37898F2E16C81ABE00F0B732 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37898F2D16C81ABE00F0B732 /* UIKit.framework */; };
 		37898F3016C81ABE00F0B732 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37898F2F16C81ABE00F0B732 /* Foundation.framework */; };
 		37898F3216C81ABE00F0B732 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37898F3116C81ABE00F0B732 /* CoreGraphics.framework */; };
@@ -32,6 +34,9 @@
 		37B21E1516CEEF00007F6256 /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 37B21E1416CEEF00007F6256 /* Icon-72@2x.png */; };
 		37B21E1716CEF3B9007F6256 /* Default-Landscape@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 37B21E1616CEF3B9007F6256 /* Default-Landscape@2x~ipad.png */; };
 		37B21E1916CEF3BE007F6256 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 37B21E1816CEF3BE007F6256 /* Default-Landscape~ipad.png */; };
+		37D6A6DB16E672560053ACD2 /* toastIconHue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 37D6A6DA16E672560053ACD2 /* toastIconHue@2x.png */; };
+		37D6A6DD16E6B7E10053ACD2 /* toastIconHueError@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 37D6A6DC16E6B7E10053ACD2 /* toastIconHueError@2x.png */; };
+		37D6A6E116E7ADDD0053ACD2 /* HueLogDialog@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 37D6A6E016E7ADDD0053ACD2 /* HueLogDialog@2x.png */; };
 		37D99B6116C85E6F00225C92 /* Sky.m in Sources */ = {isa = PBXBuildFile; fileRef = 37D99B6016C85E6F00225C92 /* Sky.m */; };
 		FDAFB24E03184A0E9F697F91 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 931C75F6DF744D09B73F1830 /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -45,6 +50,9 @@
 		3749EC5A16E51210002C76EA /* NVSlideMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NVSlideMenuController.h; sourceTree = "<group>"; };
 		3749EC5B16E51210002C76EA /* NVSlideMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NVSlideMenuController.m; sourceTree = "<group>"; };
 		3749EC5D16E51D71002C76EA /* WoolButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "WoolButton@2x.png"; path = "Resources/Images/WoolButton@2x.png"; sourceTree = "<group>"; };
+		3749EC6016E55360002C76EA /* Toast+UIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Toast+UIView.h"; sourceTree = "<group>"; };
+		3749EC6116E55360002C76EA /* Toast+UIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Toast+UIView.m"; sourceTree = "<group>"; };
+		3749EC6316E554A5002C76EA /* toastIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "toastIcon@2x.png"; path = "Resources/Images/toastIcon@2x.png"; sourceTree = "<group>"; };
 		37898F2A16C81ABE00F0B732 /* MinecraftHue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MinecraftHue.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		37898F2D16C81ABE00F0B732 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		37898F2F16C81ABE00F0B732 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -69,6 +77,9 @@
 		37B21E1416CEEF00007F6256 /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72@2x.png"; sourceTree = "<group>"; };
 		37B21E1616CEF3B9007F6256 /* Default-Landscape@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape@2x~ipad.png"; sourceTree = "<group>"; };
 		37B21E1816CEF3BE007F6256 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape~ipad.png"; sourceTree = "<group>"; };
+		37D6A6DA16E672560053ACD2 /* toastIconHue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "toastIconHue@2x.png"; path = "Resources/Images/toastIconHue@2x.png"; sourceTree = "<group>"; };
+		37D6A6DC16E6B7E10053ACD2 /* toastIconHueError@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "toastIconHueError@2x.png"; path = "Resources/Images/toastIconHueError@2x.png"; sourceTree = "<group>"; };
+		37D6A6E016E7ADDD0053ACD2 /* HueLogDialog@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "HueLogDialog@2x.png"; path = "Resources/Images/HueLogDialog@2x.png"; sourceTree = "<group>"; };
 		37D99B5F16C85E6F00225C92 /* Sky.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Sky.h; path = Classes/Sky.h; sourceTree = "<group>"; };
 		37D99B6016C85E6F00225C92 /* Sky.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Sky.m; path = Classes/Sky.m; sourceTree = "<group>"; };
 		931C75F6DF744D09B73F1830 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -98,6 +109,15 @@
 				3749EC5B16E51210002C76EA /* NVSlideMenuController.m */,
 			);
 			name = NVSlideMenuController;
+			sourceTree = "<group>";
+		};
+		3749EC5F16E55346002C76EA /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				3749EC6016E55360002C76EA /* Toast+UIView.h */,
+				3749EC6116E55360002C76EA /* Toast+UIView.m */,
+			);
+			name = Categories;
 			sourceTree = "<group>";
 		};
 		37898F2116C81ABE00F0B732 = {
@@ -137,6 +157,7 @@
 		37898F3316C81ABE00F0B732 /* MinecraftHue */ = {
 			isa = PBXGroup;
 			children = (
+				3749EC5F16E55346002C76EA /* Categories */,
 				37D99B5E16C85E3400225C92 /* Classes */,
 				37898F5016C8213B00F0B732 /* Resources */,
 				37898F3C16C81ABE00F0B732 /* AppDelegate.h */,
@@ -144,10 +165,10 @@
 				37898F4516C81ABE00F0B732 /* ViewController.h */,
 				37898F4616C81ABE00F0B732 /* ViewController.m */,
 				37898F4816C81ABE00F0B732 /* ViewController.xib */,
-				37898F3416C81ABE00F0B732 /* Supporting Files */,
 				3749EC5116E50B3A002C76EA /* SettingsViewController.h */,
 				3749EC5216E50B3A002C76EA /* SettingsViewController.m */,
 				3749EC5316E50B3A002C76EA /* SettingsViewController.xib */,
+				37898F3416C81ABE00F0B732 /* Supporting Files */,
 			);
 			path = MinecraftHue;
 			sourceTree = "<group>";
@@ -177,11 +198,15 @@
 		37898F5116C8214200F0B732 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				37D6A6E016E7ADDD0053ACD2 /* HueLogDialog@2x.png */,
+				37D6A6DC16E6B7E10053ACD2 /* toastIconHueError@2x.png */,
 				3749EC5D16E51D71002C76EA /* WoolButton@2x.png */,
 				3749EC5816E5106E002C76EA /* config@2x.fw.png */,
 				3749EC5616E50B74002C76EA /* settingsBG@2x.png */,
 				37898F5C16C82A1000F0B732 /* Moon@2x.png */,
 				37898F5D16C82A1000F0B732 /* Sun@2x.png */,
+				3749EC6316E554A5002C76EA /* toastIcon@2x.png */,
+				37D6A6DA16E672560053ACD2 /* toastIconHue@2x.png */,
 				37898F5616C8217A00F0B732 /* appBG@2x.png */,
 			);
 			name = Images;
@@ -265,6 +290,10 @@
 				3749EC5716E50B74002C76EA /* settingsBG@2x.png in Resources */,
 				3749EC5916E5106E002C76EA /* config@2x.fw.png in Resources */,
 				3749EC5E16E51D71002C76EA /* WoolButton@2x.png in Resources */,
+				3749EC6416E554A5002C76EA /* toastIcon@2x.png in Resources */,
+				37D6A6DB16E672560053ACD2 /* toastIconHue@2x.png in Resources */,
+				37D6A6DD16E6B7E10053ACD2 /* toastIconHueError@2x.png in Resources */,
+				37D6A6E116E7ADDD0053ACD2 /* HueLogDialog@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,6 +327,7 @@
 				37D99B6116C85E6F00225C92 /* Sky.m in Sources */,
 				3749EC5416E50B3A002C76EA /* SettingsViewController.m in Sources */,
 				3749EC5C16E51210002C76EA /* NVSlideMenuController.m in Sources */,
+				3749EC6216E55360002C76EA /* Toast+UIView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

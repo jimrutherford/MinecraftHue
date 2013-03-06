@@ -11,8 +11,9 @@
 #import <DPHue/DPHueDiscover.h>
 #import <DPHue/DPHue.h>
 #import "NVSlideMenuController.h"
+#import "SettingsViewController.h"
 
-@interface ViewController : UIViewController<DPHueDiscoverDelegate>
+@interface ViewController : UIViewController<DPHueDiscoverDelegate, SettingsViewControllerDelegate>
 
 @property (nonatomic, strong) NSTimer *timer;
 @property (nonatomic, strong) DPHueDiscover *dhd;
@@ -34,5 +35,8 @@
 
 @property (strong, nonatomic)  NVSlideMenuController *slideMenuController;
 
+@property (weak, nonatomic) IBOutlet UIView *hueErrorLogView;
+@property (weak, nonatomic) IBOutlet UITextView *hueErrorLogTextView;
+- (IBAction)closeHueLogButtonTapped:(UIButton *)sender;
 
 @end

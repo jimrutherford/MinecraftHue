@@ -22,6 +22,8 @@
 	self.contentViewController = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
 	self.menuViewController = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil];
 	
+	self.menuViewController.delegate = self.contentViewController;
+	
 	self.slideMenuController = [[NVSlideMenuController alloc] initWithMenuViewController:self.menuViewController andContentViewController:self.contentViewController];
 	
 	self.window.rootViewController = self.slideMenuController;

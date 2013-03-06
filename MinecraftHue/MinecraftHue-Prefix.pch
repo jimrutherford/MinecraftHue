@@ -4,6 +4,13 @@
 
 #import <Availability.h>
 
+#define nightStart 1188
+#define sunriseStart 252
+#define dayStart 360
+#define sunsetStart 1080
+#define midnightStart 0
+#define noonStart 720
+
 #ifndef __IPHONE_4_0
 #warning "This project uses features only available in iOS SDK 4.0 and later."
 #endif

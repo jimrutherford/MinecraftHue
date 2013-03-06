@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "NVSlideMenuController.h"
+#import "SettingsViewController.h"
 
 @class ViewController;
 
@@ -15,7 +16,7 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
-@property (strong, nonatomic) UIViewController *menuViewController;
+@property (strong, nonatomic) SettingsViewController *menuViewController;
 @property (strong, nonatomic) UIViewController *contentViewController;
 @property (strong, nonatomic)  NVSlideMenuController *slideMenuController;
 

@@ -13,15 +13,11 @@
 #import <DPHue/DPHueLight.h>
 #import	"AppDelegate.h"
 #import "NVSlideMenuController.h"
+#import "Toast+UIView.h"
 
 #define totalMinutes 1440
 #define ScreenWidth [[UIScreen mainScreen] bounds].size.width
 #define ScreenHeight [[UIScreen mainScreen] bounds].size.height
-
-#define nightStart 1188
-#define sunriseStart 252
-#define dayStart 360
-#define sunsetStart 1080
 
 #define minutesInDay 720.0
 #define minutesInNight 504.0
@@ -64,6 +60,8 @@ NSString *host;
 	slideMenuController = appDelegate.slideMenuController;
 	slideMenuController.panGestureEnabled = NO;
 	slideMenuController.contentViewWidthWhenMenuIsOpen = 700;
+	
+	self.hueErrorLogView.alpha = 0;
 	
 	UIPanGestureRecognizer *panGestureRecognizer = [[UIPanGestureRecognizer alloc]
                                                      initWithTarget:self
@@ -525,7 +523,7 @@ bool nightlightSet = NO;
 	
 	username = @"D91B68EFF1606584721584082E415C0E"; //[DPHue generateUsername];
 	
-    NSLog(@"Hue Found! Authenticating...");
+	[self logHueError:@"Hue Found! Authenticating..."];
     DPHue *someHue = [[DPHue alloc] initWithHueHost:host username:username];
     [someHue readWithCompletion:^(DPHue *hue, NSError *err) {
         self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(createUsernameAt:) userInfo:host repeats:YES];
@@ -534,21 +532,28 @@ bool nightlightSet = NO;
 
 - (void)createUsernameAt:(NSTimer *)timer {
     host = timer.userInfo;
-    NSLog(@"Attempting to create username at %@", host);
-    NSLog(@"%@: Attempting to authenticate to %@\n", [NSDate date], host);
+    [self logHueError:[NSString stringWithFormat:@"Attempting to create username at %@", host]];
+	[self logHueError:[NSString stringWithFormat:@"Attempting to authenticate to %@\n", host]];
+
     DPHue *someHue = [[DPHue alloc] initWithHueHost:host username:username];
     [someHue readWithCompletion:^(DPHue *hue, NSError *err) {
         if (hue.authenticated) {
-            NSLog(@"%@: Successfully authenticated\n", [NSDate date]);
+            [self logHueError:@"Successfully authenticated"];
             [self.timer invalidate];
 			
             self.foundHueHost = hue.host;
-            NSLog(@"Found Hue at %@, named '%@'!", hue.host, hue.name);
+            [self logHueError:[NSString stringWithFormat:@"Found Hue at %@, named '%@'!", hue.host, hue.name]];
+			
+			[slideMenuController.view makeToast:@"Connected to Phillips Hue!"
+									   duration:8.0
+									   position:[NSValue valueWithCGPoint:CGPointMake(512, 384)]
+										  title:@"Phillips Hue"
+										  image:[UIImage imageNamed:@"toastIconHue"]];
 			
 			[self animateMoonSun];
 			[self changeHueWithIndex:0];
         } else {
-            NSLog(@"%@: Authentication failed, will try to create username\n", [NSDate date]);
+            [self logHueError:@"Authentication failed, will try to create username"];
             [someHue registerUsername];
         }
     }];
@@ -561,8 +566,20 @@ bool nightlightSet = NO;
     self.dhd = nil;
     [self.timer invalidate];
     if (!self.foundHueHost) {
-        NSLog(@"Failed to find Hue");
+        [self logHueError:@"Failed to find Hue"];
+		[slideMenuController.view makeToast:@"Failed to connect to Phillips Hue.  Open settings panel to view log."
+								   duration:8.0
+								   position:[NSValue valueWithCGPoint:CGPointMake(512, 384)]
+									  title:@"Phillips Hue"
+									  image:[UIImage imageNamed:@"toastIconHueError"]];
     }
+}
+
+
+- (void) logHueError:(NSString*)message
+{
+	NSLog(@"%@: %@\n", [NSDate date], message);
+	self.hueErrorLogTextView.text = [NSString stringWithFormat:@"%@\n%@", self.hueErrorLogTextView.text, message];
 }
 
 
@@ -570,6 +587,16 @@ bool nightlightSet = NO;
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void) didChangeTime:(int)minutes
+{
+	currentMinute = minutes;
+}
+
+- (void) didRequestDisplayHueLog
+{
+	self.hueErrorLogView.alpha = 1;
 }
 
 - (IBAction)configButtonTouched:(UIButton *)sender {
@@ -582,5 +609,8 @@ bool nightlightSet = NO;
 	} else {
 		[slideMenuController showMenuAnimated:YES completion:nil];
 	}
+}
+- (IBAction)closeHueLogButtonTapped:(UIButton *)sender {
+	self.hueErrorLogView.alpha = 0;
 }
 @end
