@@ -229,7 +229,11 @@ BOOL isPanning;
 	{
 		lastX = 0.0f;
 		isPanning = NO;
-	} else
+		oldIndex = -1;
+		daylightSet = NO;
+		nightlightSet = NO;
+	}
+	else
 	{
 		isPanning = YES;
 		CGPoint point = [recognizer translationInView:self.view];
@@ -523,7 +527,7 @@ bool nightlightSet = NO;
 	
 	username = @"D91B68EFF1606584721584082E415C0E"; //[DPHue generateUsername];
 	
-	[self logHueError:@"Hue Found! Authenticating..."];
+	[self logHueError:@"Starting Hue discovery..."];
     DPHue *someHue = [[DPHue alloc] initWithHueHost:host username:username];
     [someHue readWithCompletion:^(DPHue *hue, NSError *err) {
         self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(createUsernameAt:) userInfo:host repeats:YES];
@@ -532,7 +536,6 @@ bool nightlightSet = NO;
 
 - (void)createUsernameAt:(NSTimer *)timer {
     host = timer.userInfo;
-    [self logHueError:[NSString stringWithFormat:@"Attempting to create username at %@", host]];
 	[self logHueError:[NSString stringWithFormat:@"Attempting to authenticate to %@\n", host]];
 
     DPHue *someHue = [[DPHue alloc] initWithHueHost:host username:username];
@@ -567,7 +570,7 @@ bool nightlightSet = NO;
     [self.timer invalidate];
     if (!self.foundHueHost) {
         [self logHueError:@"Failed to find Hue"];
-		[slideMenuController.view makeToast:@"Failed to connect to Phillips Hue.  Open settings panel to view log."
+		[slideMenuController.view makeToast:@"Failed to connect to Phillips Hue.\nOpen settings panel to view log."
 								   duration:8.0
 								   position:[NSValue valueWithCGPoint:CGPointMake(512, 384)]
 									  title:@"Phillips Hue"
@@ -592,6 +595,12 @@ bool nightlightSet = NO;
 - (void) didChangeTime:(int)minutes
 {
 	currentMinute = minutes;
+	oldIndex = -1;
+	daylightSet = NO;
+	nightlightSet = NO;
+	[self positionMoon:0];
+	[self positionSun:0];
+	[self animateMoonSun];
 }
 
 - (void) didRequestDisplayHueLog
