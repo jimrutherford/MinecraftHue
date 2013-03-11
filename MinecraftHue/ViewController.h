@@ -8,16 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "Sky.h"
-#import <DPHue/DPHueDiscover.h>
-#import <DPHue/DPHue.h>
 #import "NVSlideMenuController.h"
 #import "SettingsViewController.h"
 
-@interface ViewController : UIViewController<DPHueDiscoverDelegate, SettingsViewControllerDelegate>
+@interface ViewController : UIViewController<SettingsViewControllerDelegate>
 
 @property (nonatomic, strong) NSTimer *timer;
-@property (nonatomic, strong) DPHueDiscover *dhd;
-@property (nonatomic, strong) DPHue *touchlinkHue;
 
 @property (nonatomic, strong) NSString *foundHueHost;
 

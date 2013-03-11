@@ -9,8 +9,6 @@
 #import "ViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "Sky.h"
-#import <DPHue/DPHue.h>
-#import <DPHue/DPHueLight.h>
 #import	"AppDelegate.h"
 #import "NVSlideMenuController.h"
 #import "Toast+UIView.h"
@@ -195,12 +193,8 @@ NSString *host;
 									repeats:YES];
 	
 	
-	self.dhd = [[DPHueDiscover alloc] initWithDelegate:self];
-    [self.dhd discoverForDuration:30 withCompletion:^(NSMutableString *log) {
-        [self discoveryTimeHasElapsed];
-    }];
-	
-    NSLog(@"Searching for Hue...");
+	//Hue Discovery
+    [self logHueError:@"Searching for Hue..."];
 	
 }
 
@@ -353,24 +347,20 @@ bool nightlightSet = NO;
 	
 	if (!isPanning)
 	{
-		DPHue *someHue = [[DPHue alloc] initWithHueHost:host username:username];
-		[someHue readWithCompletion:^(DPHue *hue, NSError *err) {
-			//[hue allLightsOn];
-			//NSLog(@"found %i lights", [hue.lights count]);
-			
-			//NSLog(@"Hue: %i, saturation: %i, brightness: %i", [light.hue integerValue], [light.saturation integerValue], [light.brightness integerValue]);
-			
-			NSDictionary *dict = [hues objectAtIndex:index];
-			
-			for (DPHueLight *light in hue.lights)
-			{
-				light.hue = [dict objectForKey:@"h"];
-				light.saturation = [dict objectForKey:@"s"];
-				light.brightness = [dict objectForKey:@"b"];
-				[light write];
-			}
-			
-		}];
+//		DPHue *someHue = [[DPHue alloc] initWithHueHost:host username:username];
+//		[someHue readWithCompletion:^(DPHue *hue, NSError *err) {
+//
+//			NSDictionary *dict = [hues objectAtIndex:index];
+//			
+//			for (DPHueLight *light in hue.lights)
+//			{
+//				light.hue = [dict objectForKey:@"h"];
+//				light.saturation = [dict objectForKey:@"s"];
+//				light.brightness = [dict objectForKey:@"b"];
+//				[light write];
+//			}
+//			
+//		}];
 	}
 	
 }
@@ -528,54 +518,54 @@ bool nightlightSet = NO;
 	username = @"D91B68EFF1606584721584082E415C0E"; //[DPHue generateUsername];
 	
 	[self logHueError:@"Starting Hue discovery..."];
-    DPHue *someHue = [[DPHue alloc] initWithHueHost:host username:username];
-    [someHue readWithCompletion:^(DPHue *hue, NSError *err) {
-        self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(createUsernameAt:) userInfo:host repeats:YES];
-    }];
+//    DPHue *someHue = [[DPHue alloc] initWithHueHost:host username:username];
+//    [someHue readWithCompletion:^(DPHue *hue, NSError *err) {
+//        self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(createUsernameAt:) userInfo:host repeats:YES];
+//    }];
 }
 
 - (void)createUsernameAt:(NSTimer *)timer {
     host = timer.userInfo;
 	[self logHueError:[NSString stringWithFormat:@"Attempting to authenticate to %@\n", host]];
 
-    DPHue *someHue = [[DPHue alloc] initWithHueHost:host username:username];
-    [someHue readWithCompletion:^(DPHue *hue, NSError *err) {
-        if (hue.authenticated) {
-            [self logHueError:@"Successfully authenticated"];
-            [self.timer invalidate];
-			
-            self.foundHueHost = hue.host;
-            [self logHueError:[NSString stringWithFormat:@"Found Hue at %@, named '%@'!", hue.host, hue.name]];
-			
-			[slideMenuController.view makeToast:@"Connected to Phillips Hue!"
-									   duration:8.0
-									   position:[NSValue valueWithCGPoint:CGPointMake(512, 384)]
-										  title:@"Phillips Hue"
-										  image:[UIImage imageNamed:@"toastIconHue"]];
-			
-			[self animateMoonSun];
-			[self changeHueWithIndex:0];
-        } else {
-            [self logHueError:@"Authentication failed, will try to create username"];
-            [someHue registerUsername];
-        }
-    }];
+//    DPHue *someHue = [[DPHue alloc] initWithHueHost:host username:username];
+//    [someHue readWithCompletion:^(DPHue *hue, NSError *err) {
+//        if (hue.authenticated) {
+//            [self logHueError:@"Successfully authenticated"];
+//            [self.timer invalidate];
+//			
+//            self.foundHueHost = hue.host;
+//            [self logHueError:[NSString stringWithFormat:@"Found Hue at %@, named '%@'!", hue.host, hue.name]];
+//			
+//			[slideMenuController.view makeToast:@"Connected to Phillips Hue!"
+//									   duration:8.0
+//									   position:[NSValue valueWithCGPoint:CGPointMake(512, 384)]
+//										  title:@"Phillips Hue"
+//										  image:[UIImage imageNamed:@"toastIconHue"]];
+//			
+//			[self animateMoonSun];
+//			[self changeHueWithIndex:0];
+//        } else {
+//            [self logHueError:@"Authentication failed, will try to create username"];
+//            [someHue registerUsername];
+//        }
+//    }];
 }
 
 
 
 
 - (void)discoveryTimeHasElapsed {
-    self.dhd = nil;
-    [self.timer invalidate];
-    if (!self.foundHueHost) {
-        [self logHueError:@"Failed to find Hue"];
-		[slideMenuController.view makeToast:@"Failed to connect to Phillips Hue.\nOpen settings panel to view log."
-								   duration:8.0
-								   position:[NSValue valueWithCGPoint:CGPointMake(512, 384)]
-									  title:@"Phillips Hue"
-									  image:[UIImage imageNamed:@"toastIconHueError"]];
-    }
+//    self.dhd = nil;
+//    [self.timer invalidate];
+//    if (!self.foundHueHost) {
+//        [self logHueError:@"Failed to find Hue"];
+//		[slideMenuController.view makeToast:@"Failed to connect to Phillips Hue.\nOpen settings panel to view log."
+//								   duration:8.0
+//								   position:[NSValue valueWithCGPoint:CGPointMake(512, 384)]
+//									  title:@"Phillips Hue"
+//									  image:[UIImage imageNamed:@"toastIconHueError"]];
+//    }
 }
 
 

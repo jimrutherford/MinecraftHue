@@ -30,6 +30,7 @@
 		37898F5E16C82A1000F0B732 /* Moon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 37898F5C16C82A1000F0B732 /* Moon@2x.png */; };
 		37898F5F16C82A1000F0B732 /* Sun@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 37898F5D16C82A1000F0B732 /* Sun@2x.png */; };
 		37898F6116C832B600F0B732 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37898F6016C832B600F0B732 /* QuartzCore.framework */; };
+		37934B3E16EE4D51007DCF25 /* HueSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37934B3D16EE4D51007DCF25 /* HueSDK.framework */; };
 		37B21E1316CEEEFB007F6256 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 37B21E1216CEEEFB007F6256 /* Icon-72.png */; };
 		37B21E1516CEEF00007F6256 /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 37B21E1416CEEF00007F6256 /* Icon-72@2x.png */; };
 		37B21E1716CEF3B9007F6256 /* Default-Landscape@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 37B21E1616CEF3B9007F6256 /* Default-Landscape@2x~ipad.png */; };
@@ -38,7 +39,6 @@
 		37D6A6DD16E6B7E10053ACD2 /* toastIconHueError@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 37D6A6DC16E6B7E10053ACD2 /* toastIconHueError@2x.png */; };
 		37D6A6E116E7ADDD0053ACD2 /* HueLogDialog@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 37D6A6E016E7ADDD0053ACD2 /* HueLogDialog@2x.png */; };
 		37D99B6116C85E6F00225C92 /* Sky.m in Sources */ = {isa = PBXBuildFile; fileRef = 37D99B6016C85E6F00225C92 /* Sky.m */; };
-		FDAFB24E03184A0E9F697F91 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 931C75F6DF744D09B73F1830 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,6 +73,7 @@
 		37898F5C16C82A1000F0B732 /* Moon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Moon@2x.png"; path = "Resources/Images/Moon@2x.png"; sourceTree = "<group>"; };
 		37898F5D16C82A1000F0B732 /* Sun@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Sun@2x.png"; path = "Resources/Images/Sun@2x.png"; sourceTree = "<group>"; };
 		37898F6016C832B600F0B732 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		37934B3D16EE4D51007DCF25 /* HueSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HueSDK.framework; path = Frameworks/HueSDK.framework; sourceTree = "<group>"; };
 		37B21E1216CEEEFB007F6256 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
 		37B21E1416CEEF00007F6256 /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72@2x.png"; sourceTree = "<group>"; };
 		37B21E1616CEF3B9007F6256 /* Default-Landscape@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape@2x~ipad.png"; sourceTree = "<group>"; };
@@ -82,8 +83,6 @@
 		37D6A6E016E7ADDD0053ACD2 /* HueLogDialog@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "HueLogDialog@2x.png"; path = "Resources/Images/HueLogDialog@2x.png"; sourceTree = "<group>"; };
 		37D99B5F16C85E6F00225C92 /* Sky.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Sky.h; path = Classes/Sky.h; sourceTree = "<group>"; };
 		37D99B6016C85E6F00225C92 /* Sky.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Sky.m; path = Classes/Sky.m; sourceTree = "<group>"; };
-		931C75F6DF744D09B73F1830 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		AB064C7EBAEB4CE2A536B117 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,11 +90,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37934B3E16EE4D51007DCF25 /* HueSDK.framework in Frameworks */,
 				37898F6116C832B600F0B732 /* QuartzCore.framework in Frameworks */,
 				37898F2E16C81ABE00F0B732 /* UIKit.framework in Frameworks */,
 				37898F3016C81ABE00F0B732 /* Foundation.framework in Frameworks */,
 				37898F3216C81ABE00F0B732 /* CoreGraphics.framework in Frameworks */,
-				FDAFB24E03184A0E9F697F91 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -127,11 +126,9 @@
 				37B21E1616CEF3B9007F6256 /* Default-Landscape@2x~ipad.png */,
 				37B21E1416CEEF00007F6256 /* Icon-72@2x.png */,
 				37B21E1216CEEEFB007F6256 /* Icon-72.png */,
-				37898F6016C832B600F0B732 /* QuartzCore.framework */,
 				37898F3316C81ABE00F0B732 /* MinecraftHue */,
 				37898F2C16C81ABE00F0B732 /* Frameworks */,
 				37898F2B16C81ABE00F0B732 /* Products */,
-				AB064C7EBAEB4CE2A536B117 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -146,10 +143,11 @@
 		37898F2C16C81ABE00F0B732 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				37898F6016C832B600F0B732 /* QuartzCore.framework */,
+				37934B3D16EE4D51007DCF25 /* HueSDK.framework */,
 				37898F2D16C81ABE00F0B732 /* UIKit.framework */,
 				37898F2F16C81ABE00F0B732 /* Foundation.framework */,
 				37898F3116C81ABE00F0B732 /* CoreGraphics.framework */,
-				931C75F6DF744D09B73F1830 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -232,7 +230,6 @@
 				37898F2616C81ABE00F0B732 /* Sources */,
 				37898F2716C81ABE00F0B732 /* Frameworks */,
 				37898F2816C81ABE00F0B732 /* Resources */,
-				577DC3C63369482BB809438B /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -298,23 +295,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		577DC3C63369482BB809438B /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		37898F2616C81ABE00F0B732 /* Sources */ = {
@@ -417,8 +397,11 @@
 		};
 		37898F4E16C81ABE00F0B732 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AB064C7EBAEB4CE2A536B117 /* Pods.xcconfig */;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Frameworks\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MinecraftHue/MinecraftHue-Prefix.pch";
 				INFOPLIST_FILE = "MinecraftHue/MinecraftHue-Info.plist";
@@ -429,8 +412,11 @@
 		};
 		37898F4F16C81ABE00F0B732 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AB064C7EBAEB4CE2A536B117 /* Pods.xcconfig */;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Frameworks\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MinecraftHue/MinecraftHue-Prefix.pch";
 				INFOPLIST_FILE = "MinecraftHue/MinecraftHue-Info.plist";
