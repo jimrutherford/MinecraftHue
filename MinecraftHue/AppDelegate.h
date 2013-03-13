@@ -10,14 +10,37 @@
 #import "NVSlideMenuController.h"
 #import "SettingsViewController.h"
 
-@class ViewController;
+#import "PHBridgeSelectionViewController.h"
+#import "PHBridgePushLinkViewController.h"
+#import "PHSoftwareUpdateManager.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@class AppDelegate;
+
+@interface AppDelegate : UIResponder <UIApplicationDelegate, UIAlertViewDelegate, PHBridgeSelectionViewControllerDelegate, PHBridgePushLinkViewControllerDelegate, PHSoftwareUpdateManagerDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
 @property (strong, nonatomic) SettingsViewController *menuViewController;
 @property (strong, nonatomic) UIViewController *contentViewController;
 @property (strong, nonatomic)  NVSlideMenuController *slideMenuController;
+
+@property (nonatomic, strong) PHHueSDK *phHueSDK;
+
+#pragma mark - HueSDK
+
+/**
+ Starts the local heartbeat
+ */
+- (void)enableLocalHeartbeat;
+
+/**
+ Stops the local heartbeat
+ */
+- (void)disableLocalHeartbeat;
+
+/**
+ Starts a search for a bridge
+ */
+- (void)searchForBridgeLocal;
 
 @end

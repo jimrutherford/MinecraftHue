@@ -31,6 +31,25 @@
 		37898F5F16C82A1000F0B732 /* Sun@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 37898F5D16C82A1000F0B732 /* Sun@2x.png */; };
 		37898F6116C832B600F0B732 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37898F6016C832B600F0B732 /* QuartzCore.framework */; };
 		37934B3E16EE4D51007DCF25 /* HueSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37934B3D16EE4D51007DCF25 /* HueSDK.framework */; };
+		37934B6316EFA713007DCF25 /* PHFindLightsResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37934B4616EFA713007DCF25 /* PHFindLightsResultViewController.m */; };
+		37934B6416EFA713007DCF25 /* PHFindLightsResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37934B4716EFA713007DCF25 /* PHFindLightsResultViewController.xib */; };
+		37934B6516EFA713007DCF25 /* PHFindLightsStartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37934B4916EFA713007DCF25 /* PHFindLightsStartViewController.m */; };
+		37934B6616EFA713007DCF25 /* PHFindLightsStartViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37934B4A16EFA713007DCF25 /* PHFindLightsStartViewController.xib */; };
+		37934B6716EFA713007DCF25 /* PHLoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37934B4D16EFA713007DCF25 /* PHLoadingViewController.m */; };
+		37934B6816EFA713007DCF25 /* PHLoadingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37934B4E16EFA713007DCF25 /* PHLoadingViewController.xib */; };
+		37934B6916EFA713007DCF25 /* PHBridgeConfigurationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37934B5016EFA713007DCF25 /* PHBridgeConfigurationViewController.m */; };
+		37934B6A16EFA713007DCF25 /* PHBridgeConfigurationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37934B5116EFA713007DCF25 /* PHBridgeConfigurationViewController.xib */; };
+		37934B6B16EFA713007DCF25 /* PHBridgePushLinkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37934B5316EFA713007DCF25 /* PHBridgePushLinkViewController.m */; };
+		37934B6C16EFA713007DCF25 /* PHBridgePushLinkViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37934B5416EFA713007DCF25 /* PHBridgePushLinkViewController.xib */; };
+		37934B6D16EFA713007DCF25 /* PHBridgeSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37934B5616EFA713007DCF25 /* PHBridgeSelectionViewController.m */; };
+		37934B6E16EFA713007DCF25 /* PHBridgeSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37934B5716EFA713007DCF25 /* PHBridgeSelectionViewController.xib */; };
+		37934B6F16EFA713007DCF25 /* PHConfigurationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37934B5916EFA713007DCF25 /* PHConfigurationViewController.m */; };
+		37934B7016EFA713007DCF25 /* PHConfigurationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37934B5A16EFA713007DCF25 /* PHConfigurationViewController.xib */; };
+		37934B7116EFA713007DCF25 /* addlights.png in Resources */ = {isa = PBXBuildFile; fileRef = 37934B5C16EFA713007DCF25 /* addlights.png */; };
+		37934B7216EFA713007DCF25 /* addlights@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 37934B5D16EFA713007DCF25 /* addlights@2x.png */; };
+		37934B7316EFA713007DCF25 /* press_smartbridge.png in Resources */ = {isa = PBXBuildFile; fileRef = 37934B5E16EFA713007DCF25 /* press_smartbridge.png */; };
+		37934B7416EFA713007DCF25 /* press_smartbridge@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 37934B5F16EFA713007DCF25 /* press_smartbridge@2x.png */; };
+		37934B7516EFA713007DCF25 /* PHSoftwareUpdateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 37934B6216EFA713007DCF25 /* PHSoftwareUpdateManager.m */; };
 		37B21E1316CEEEFB007F6256 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 37B21E1216CEEEFB007F6256 /* Icon-72.png */; };
 		37B21E1516CEEF00007F6256 /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 37B21E1416CEEF00007F6256 /* Icon-72@2x.png */; };
 		37B21E1716CEF3B9007F6256 /* Default-Landscape@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 37B21E1616CEF3B9007F6256 /* Default-Landscape@2x~ipad.png */; };
@@ -74,6 +93,33 @@
 		37898F5D16C82A1000F0B732 /* Sun@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Sun@2x.png"; path = "Resources/Images/Sun@2x.png"; sourceTree = "<group>"; };
 		37898F6016C832B600F0B732 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		37934B3D16EE4D51007DCF25 /* HueSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HueSDK.framework; path = Frameworks/HueSDK.framework; sourceTree = "<group>"; };
+		37934B4516EFA713007DCF25 /* PHFindLightsResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PHFindLightsResultViewController.h; sourceTree = "<group>"; };
+		37934B4616EFA713007DCF25 /* PHFindLightsResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PHFindLightsResultViewController.m; sourceTree = "<group>"; };
+		37934B4716EFA713007DCF25 /* PHFindLightsResultViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PHFindLightsResultViewController.xib; sourceTree = "<group>"; };
+		37934B4816EFA713007DCF25 /* PHFindLightsStartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PHFindLightsStartViewController.h; sourceTree = "<group>"; };
+		37934B4916EFA713007DCF25 /* PHFindLightsStartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PHFindLightsStartViewController.m; sourceTree = "<group>"; };
+		37934B4A16EFA713007DCF25 /* PHFindLightsStartViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PHFindLightsStartViewController.xib; sourceTree = "<group>"; };
+		37934B4C16EFA713007DCF25 /* PHLoadingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PHLoadingViewController.h; sourceTree = "<group>"; };
+		37934B4D16EFA713007DCF25 /* PHLoadingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PHLoadingViewController.m; sourceTree = "<group>"; };
+		37934B4E16EFA713007DCF25 /* PHLoadingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PHLoadingViewController.xib; sourceTree = "<group>"; };
+		37934B4F16EFA713007DCF25 /* PHBridgeConfigurationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PHBridgeConfigurationViewController.h; path = SDKWizard/PHBridgeConfigurationViewController.h; sourceTree = "<group>"; };
+		37934B5016EFA713007DCF25 /* PHBridgeConfigurationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PHBridgeConfigurationViewController.m; path = SDKWizard/PHBridgeConfigurationViewController.m; sourceTree = "<group>"; };
+		37934B5116EFA713007DCF25 /* PHBridgeConfigurationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PHBridgeConfigurationViewController.xib; path = SDKWizard/PHBridgeConfigurationViewController.xib; sourceTree = "<group>"; };
+		37934B5216EFA713007DCF25 /* PHBridgePushLinkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PHBridgePushLinkViewController.h; path = SDKWizard/PHBridgePushLinkViewController.h; sourceTree = "<group>"; };
+		37934B5316EFA713007DCF25 /* PHBridgePushLinkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PHBridgePushLinkViewController.m; path = SDKWizard/PHBridgePushLinkViewController.m; sourceTree = "<group>"; };
+		37934B5416EFA713007DCF25 /* PHBridgePushLinkViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PHBridgePushLinkViewController.xib; path = SDKWizard/PHBridgePushLinkViewController.xib; sourceTree = "<group>"; };
+		37934B5516EFA713007DCF25 /* PHBridgeSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PHBridgeSelectionViewController.h; path = SDKWizard/PHBridgeSelectionViewController.h; sourceTree = "<group>"; };
+		37934B5616EFA713007DCF25 /* PHBridgeSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PHBridgeSelectionViewController.m; path = SDKWizard/PHBridgeSelectionViewController.m; sourceTree = "<group>"; };
+		37934B5716EFA713007DCF25 /* PHBridgeSelectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PHBridgeSelectionViewController.xib; path = SDKWizard/PHBridgeSelectionViewController.xib; sourceTree = "<group>"; };
+		37934B5816EFA713007DCF25 /* PHConfigurationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PHConfigurationViewController.h; path = SDKWizard/PHConfigurationViewController.h; sourceTree = "<group>"; };
+		37934B5916EFA713007DCF25 /* PHConfigurationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PHConfigurationViewController.m; path = SDKWizard/PHConfigurationViewController.m; sourceTree = "<group>"; };
+		37934B5A16EFA713007DCF25 /* PHConfigurationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PHConfigurationViewController.xib; path = SDKWizard/PHConfigurationViewController.xib; sourceTree = "<group>"; };
+		37934B5C16EFA713007DCF25 /* addlights.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addlights.png; sourceTree = "<group>"; };
+		37934B5D16EFA713007DCF25 /* addlights@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addlights@2x.png"; sourceTree = "<group>"; };
+		37934B5E16EFA713007DCF25 /* press_smartbridge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = press_smartbridge.png; sourceTree = "<group>"; };
+		37934B5F16EFA713007DCF25 /* press_smartbridge@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "press_smartbridge@2x.png"; sourceTree = "<group>"; };
+		37934B6116EFA713007DCF25 /* PHSoftwareUpdateManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PHSoftwareUpdateManager.h; sourceTree = "<group>"; };
+		37934B6216EFA713007DCF25 /* PHSoftwareUpdateManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PHSoftwareUpdateManager.m; sourceTree = "<group>"; };
 		37B21E1216CEEEFB007F6256 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
 		37B21E1416CEEF00007F6256 /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72@2x.png"; sourceTree = "<group>"; };
 		37B21E1616CEF3B9007F6256 /* Default-Landscape@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape@2x~ipad.png"; sourceTree = "<group>"; };
@@ -155,6 +201,7 @@
 		37898F3316C81ABE00F0B732 /* MinecraftHue */ = {
 			isa = PBXGroup;
 			children = (
+				37934B7616EFA71A007DCF25 /* HueWizard */,
 				3749EC5F16E55346002C76EA /* Categories */,
 				37D99B5E16C85E3400225C92 /* Classes */,
 				37898F5016C8213B00F0B732 /* Resources */,
@@ -208,6 +255,76 @@
 				37898F5616C8217A00F0B732 /* appBG@2x.png */,
 			);
 			name = Images;
+			sourceTree = "<group>";
+		};
+		37934B4416EFA712007DCF25 /* FindLights */ = {
+			isa = PBXGroup;
+			children = (
+				37934B4516EFA713007DCF25 /* PHFindLightsResultViewController.h */,
+				37934B4616EFA713007DCF25 /* PHFindLightsResultViewController.m */,
+				37934B4716EFA713007DCF25 /* PHFindLightsResultViewController.xib */,
+				37934B4816EFA713007DCF25 /* PHFindLightsStartViewController.h */,
+				37934B4916EFA713007DCF25 /* PHFindLightsStartViewController.m */,
+				37934B4A16EFA713007DCF25 /* PHFindLightsStartViewController.xib */,
+			);
+			name = FindLights;
+			path = SDKWizard/FindLights;
+			sourceTree = "<group>";
+		};
+		37934B4B16EFA713007DCF25 /* LoadingView */ = {
+			isa = PBXGroup;
+			children = (
+				37934B4C16EFA713007DCF25 /* PHLoadingViewController.h */,
+				37934B4D16EFA713007DCF25 /* PHLoadingViewController.m */,
+				37934B4E16EFA713007DCF25 /* PHLoadingViewController.xib */,
+			);
+			name = LoadingView;
+			path = SDKWizard/LoadingView;
+			sourceTree = "<group>";
+		};
+		37934B5B16EFA713007DCF25 /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				37934B5C16EFA713007DCF25 /* addlights.png */,
+				37934B5D16EFA713007DCF25 /* addlights@2x.png */,
+				37934B5E16EFA713007DCF25 /* press_smartbridge.png */,
+				37934B5F16EFA713007DCF25 /* press_smartbridge@2x.png */,
+			);
+			name = resources;
+			path = SDKWizard/resources;
+			sourceTree = "<group>";
+		};
+		37934B6016EFA713007DCF25 /* SoftwareUpdate */ = {
+			isa = PBXGroup;
+			children = (
+				37934B6116EFA713007DCF25 /* PHSoftwareUpdateManager.h */,
+				37934B6216EFA713007DCF25 /* PHSoftwareUpdateManager.m */,
+			);
+			name = SoftwareUpdate;
+			path = SDKWizard/SoftwareUpdate;
+			sourceTree = "<group>";
+		};
+		37934B7616EFA71A007DCF25 /* HueWizard */ = {
+			isa = PBXGroup;
+			children = (
+				37934B4416EFA712007DCF25 /* FindLights */,
+				37934B4B16EFA713007DCF25 /* LoadingView */,
+				37934B4F16EFA713007DCF25 /* PHBridgeConfigurationViewController.h */,
+				37934B5016EFA713007DCF25 /* PHBridgeConfigurationViewController.m */,
+				37934B5116EFA713007DCF25 /* PHBridgeConfigurationViewController.xib */,
+				37934B5216EFA713007DCF25 /* PHBridgePushLinkViewController.h */,
+				37934B5316EFA713007DCF25 /* PHBridgePushLinkViewController.m */,
+				37934B5416EFA713007DCF25 /* PHBridgePushLinkViewController.xib */,
+				37934B5516EFA713007DCF25 /* PHBridgeSelectionViewController.h */,
+				37934B5616EFA713007DCF25 /* PHBridgeSelectionViewController.m */,
+				37934B5716EFA713007DCF25 /* PHBridgeSelectionViewController.xib */,
+				37934B5816EFA713007DCF25 /* PHConfigurationViewController.h */,
+				37934B5916EFA713007DCF25 /* PHConfigurationViewController.m */,
+				37934B5A16EFA713007DCF25 /* PHConfigurationViewController.xib */,
+				37934B5B16EFA713007DCF25 /* resources */,
+				37934B6016EFA713007DCF25 /* SoftwareUpdate */,
+			);
+			name = HueWizard;
 			sourceTree = "<group>";
 		};
 		37D99B5E16C85E3400225C92 /* Classes */ = {
@@ -291,6 +408,17 @@
 				37D6A6DB16E672560053ACD2 /* toastIconHue@2x.png in Resources */,
 				37D6A6DD16E6B7E10053ACD2 /* toastIconHueError@2x.png in Resources */,
 				37D6A6E116E7ADDD0053ACD2 /* HueLogDialog@2x.png in Resources */,
+				37934B6416EFA713007DCF25 /* PHFindLightsResultViewController.xib in Resources */,
+				37934B6616EFA713007DCF25 /* PHFindLightsStartViewController.xib in Resources */,
+				37934B6816EFA713007DCF25 /* PHLoadingViewController.xib in Resources */,
+				37934B6A16EFA713007DCF25 /* PHBridgeConfigurationViewController.xib in Resources */,
+				37934B6C16EFA713007DCF25 /* PHBridgePushLinkViewController.xib in Resources */,
+				37934B6E16EFA713007DCF25 /* PHBridgeSelectionViewController.xib in Resources */,
+				37934B7016EFA713007DCF25 /* PHConfigurationViewController.xib in Resources */,
+				37934B7116EFA713007DCF25 /* addlights.png in Resources */,
+				37934B7216EFA713007DCF25 /* addlights@2x.png in Resources */,
+				37934B7316EFA713007DCF25 /* press_smartbridge.png in Resources */,
+				37934B7416EFA713007DCF25 /* press_smartbridge@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,6 +436,14 @@
 				3749EC5416E50B3A002C76EA /* SettingsViewController.m in Sources */,
 				3749EC5C16E51210002C76EA /* NVSlideMenuController.m in Sources */,
 				3749EC6216E55360002C76EA /* Toast+UIView.m in Sources */,
+				37934B6316EFA713007DCF25 /* PHFindLightsResultViewController.m in Sources */,
+				37934B6516EFA713007DCF25 /* PHFindLightsStartViewController.m in Sources */,
+				37934B6716EFA713007DCF25 /* PHLoadingViewController.m in Sources */,
+				37934B6916EFA713007DCF25 /* PHBridgeConfigurationViewController.m in Sources */,
+				37934B6B16EFA713007DCF25 /* PHBridgePushLinkViewController.m in Sources */,
+				37934B6D16EFA713007DCF25 /* PHBridgeSelectionViewController.m in Sources */,
+				37934B6F16EFA713007DCF25 /* PHConfigurationViewController.m in Sources */,
+				37934B7516EFA713007DCF25 /* PHSoftwareUpdateManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

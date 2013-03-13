@@ -192,10 +192,6 @@ NSString *host;
 								   userInfo:nil
 									repeats:YES];
 	
-	
-	//Hue Discovery
-    [self logHueError:@"Searching for Hue..."];
-	
 }
 
 
@@ -245,8 +241,6 @@ BOOL isPanning;
 		{
 			currentMinute = 0;
 		}
-		
-		//NSLog(@"CurrentMinute - %i", currentMinute);
 		
 		lastX = currentX;
 		
@@ -347,20 +341,7 @@ bool nightlightSet = NO;
 	
 	if (!isPanning)
 	{
-//		DPHue *someHue = [[DPHue alloc] initWithHueHost:host username:username];
-//		[someHue readWithCompletion:^(DPHue *hue, NSError *err) {
-//
-//			NSDictionary *dict = [hues objectAtIndex:index];
-//			
-//			for (DPHueLight *light in hue.lights)
-//			{
-//				light.hue = [dict objectForKey:@"h"];
-//				light.saturation = [dict objectForKey:@"s"];
-//				light.brightness = [dict objectForKey:@"b"];
-//				[light write];
-//			}
-//			
-//		}];
+
 	}
 	
 }
@@ -373,8 +354,6 @@ bool nightlightSet = NO;
 	double x = ((arcFactor * 2) * percentComplete) - arcFactor;
 	
 	double y = (0.05 * x) * (0.05 * x);
-	
-	//NSLog(@"x: %f   y:%f", x, y);
 	
 	sunFrame.origin.x = (x + 512) - (sunFrame.size.width / 2);
 	sunFrame.origin.y = y - (sunFrame.size.height / 2) + verticalOffset;
@@ -391,8 +370,6 @@ bool nightlightSet = NO;
 	double x = ((arcFactor * 2) * percentComplete) - arcFactor;
 	
 	double y = (0.05 * x) * (0.05 * x);
-	
-	//NSLog(@"x: %f   y:%f", x, y);
 	
 	moonFrame.origin.x = (x + 512) - (moonFrame.size.width / 2);
 	moonFrame.origin.y = y - (moonFrame.size.height / 2) + verticalOffset;
@@ -507,65 +484,6 @@ bool nightlightSet = NO;
 	}
 	
 	self.timeLabel.text = [NSString stringWithFormat:@"%i:%@",currentMinute/60, minutes];
-}
-
-
-
-#pragma mark - DPHueDiscover delegate
-
-- (void)foundHueAt:(NSString *)host discoveryLog:(NSMutableString *)log {
-	
-	username = @"D91B68EFF1606584721584082E415C0E"; //[DPHue generateUsername];
-	
-	[self logHueError:@"Starting Hue discovery..."];
-//    DPHue *someHue = [[DPHue alloc] initWithHueHost:host username:username];
-//    [someHue readWithCompletion:^(DPHue *hue, NSError *err) {
-//        self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(createUsernameAt:) userInfo:host repeats:YES];
-//    }];
-}
-
-- (void)createUsernameAt:(NSTimer *)timer {
-    host = timer.userInfo;
-	[self logHueError:[NSString stringWithFormat:@"Attempting to authenticate to %@\n", host]];
-
-//    DPHue *someHue = [[DPHue alloc] initWithHueHost:host username:username];
-//    [someHue readWithCompletion:^(DPHue *hue, NSError *err) {
-//        if (hue.authenticated) {
-//            [self logHueError:@"Successfully authenticated"];
-//            [self.timer invalidate];
-//			
-//            self.foundHueHost = hue.host;
-//            [self logHueError:[NSString stringWithFormat:@"Found Hue at %@, named '%@'!", hue.host, hue.name]];
-//			
-//			[slideMenuController.view makeToast:@"Connected to Phillips Hue!"
-//									   duration:8.0
-//									   position:[NSValue valueWithCGPoint:CGPointMake(512, 384)]
-//										  title:@"Phillips Hue"
-//										  image:[UIImage imageNamed:@"toastIconHue"]];
-//			
-//			[self animateMoonSun];
-//			[self changeHueWithIndex:0];
-//        } else {
-//            [self logHueError:@"Authentication failed, will try to create username"];
-//            [someHue registerUsername];
-//        }
-//    }];
-}
-
-
-
-
-- (void)discoveryTimeHasElapsed {
-//    self.dhd = nil;
-//    [self.timer invalidate];
-//    if (!self.foundHueHost) {
-//        [self logHueError:@"Failed to find Hue"];
-//		[slideMenuController.view makeToast:@"Failed to connect to Phillips Hue.\nOpen settings panel to view log."
-//								   duration:8.0
-//								   position:[NSValue valueWithCGPoint:CGPointMake(512, 384)]
-//									  title:@"Phillips Hue"
-//									  image:[UIImage imageNamed:@"toastIconHueError"]];
-//    }
 }
 
 

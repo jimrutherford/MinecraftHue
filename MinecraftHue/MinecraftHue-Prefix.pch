@@ -4,6 +4,8 @@
 
 #import <Availability.h>
 
+#define UIAppDelegate  ((AppDelegate *)[[UIApplication sharedApplication] delegate])
+
 #define nightStart 1188
 #define sunriseStart 252
 #define dayStart 360
