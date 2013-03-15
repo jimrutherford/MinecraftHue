@@ -48,17 +48,22 @@
 @synthesize slideMenuController;
 @synthesize isTimeLocked;
 
-float minutesInPixel;
-
-
 NSString *username;
 NSString *host;
+
+float minutesInPixel;
+float lastX;
+
+int currentMinute = 0.0f;
+int oldIndex = -1;
+
+BOOL isDayLightSet = NO;
+BOOL isNightLightSet = NO;
+BOOL isPanning;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	
-	AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
 	
 	isTimeLocked = NO;
 	
@@ -66,8 +71,7 @@ NSString *host;
 	// Add notification listener for cache update of lights
     [[PHNotificationManager defaultManager] registerObject:self withSelector:@selector(updateLights) forNotification:LIGHTS_CACHE_UPDATED_NOTIFICATION];
 	
-	
-	slideMenuController = appDelegate.slideMenuController;
+	slideMenuController = UIAppDelegate.slideMenuController;
 	slideMenuController.panGestureEnabled = NO;
 	slideMenuController.contentViewWidthWhenMenuIsOpen = 700;
 	
@@ -86,8 +90,6 @@ NSString *host;
     
     [[self view] addGestureRecognizer:tapGestureRecognizer];
 	
-	
-	currentMinute = 0.0f;
 	[self updateTimeLabel];
     
 	minutesInPixel = totalMinutes/ScreenWidth;
@@ -96,102 +98,7 @@ NSString *host;
 
     sky = [[Sky alloc] initWithFrame:skyRect];
 	
-	NSDictionary *dict;
-	startColors = [NSMutableArray array];
-	endColors = [NSMutableArray array];
-	hues = [NSMutableArray array];
-
-
-	// 0 night
-	[startColors addObject: [UIColor colorWithHue:0.84f saturation:0.68f brightness:0.00f alpha:1.00f]];
-	[endColors addObject: [UIColor colorWithHue:0.66f saturation:0.71f brightness:0.04f alpha:1.00f]];
-	dict = @{ @"h" : @47103, @"s" : @254, @"b" : @61 };
-	[hues addObject:dict];
-	
-	// 1
-	[startColors addObject: [UIColor colorWithHue:0.84f saturation:0.68f brightness:0.00f alpha:1.00f]];
-	[endColors addObject: [UIColor colorWithHue:0.97f saturation:0.59f brightness:0.18f alpha:1.00f]];
-	dict = @{ @"h" : @272, @"s" : @234, @"b" : @10 };
-	[hues addObject:dict];
-	
-	// 2
-	[startColors addObject: [UIColor colorWithHue:0.84f saturation:0.68f brightness:0.00f alpha:1.00f]];
-	[endColors addObject: [UIColor colorWithHue:0.00f saturation:0.65f brightness:0.37f alpha:1.00f]];
-	dict = @{ @"h" : @272, @"s" : @234, @"b" : @70 };
-	[hues addObject:dict];
-	
-	// 3
-	[startColors addObject: [UIColor colorWithHue:0.88f saturation:0.51f brightness:0.13f alpha:1.00f]];
-	[endColors addObject: [UIColor colorWithHue:0.01f saturation:0.60f brightness:0.55f alpha:1.00f]];
-	dict = @{ @"h" : @272, @"s" : @234, @"b" : @140 };
-	[hues addObject:dict];
-	
-	// 4
-	[startColors addObject: [UIColor colorWithHue:0.66f saturation:0.24f brightness:0.28f alpha:1.00f]];
-	[endColors addObject: [UIColor colorWithHue:0.03f saturation:0.65f brightness:0.71f alpha:1.00f]];
-	dict = @{ @"h" : @5237, @"s" : @242, @"b" : @180 };
-	[hues addObject:dict];
-	
-	// 5
-	[startColors addObject: [UIColor colorWithHue:0.65f saturation:0.31f brightness:0.40f alpha:1.00f]];
-	[endColors addObject: [UIColor colorWithHue:0.04f saturation:0.66f brightness:0.78f alpha:1.00f]];
-	dict = @{ @"h" : @4948, @"s" : @241, @"b" : @255 };
-	[hues addObject:dict];
-	
-	// 6
-	[startColors addObject: [UIColor colorWithHue:0.66f saturation:0.28f brightness:0.49f alpha:1.00f]];
-	[endColors addObject: [UIColor colorWithHue:0.05f saturation:0.68f brightness:0.83f alpha:1.00f]];
-	dict = @{ @"h" : @9940, @"s" : @239, @"b" : @255 };
-	[hues addObject:dict];
-	
-	// 7
-	[startColors addObject: [UIColor colorWithHue:0.64f saturation:0.32f brightness:0.60f alpha:1.00f]];
-	[endColors addObject: [UIColor colorWithHue:0.06f saturation:0.69f brightness:0.86f alpha:1.00f]];
-	dict = @{ @"h" : @10470, @"s" : @171, @"b" : @255 };
-	[hues addObject:dict];
-	
-	// 8
-	[startColors addObject: [UIColor colorWithHue:0.62f saturation:0.42f brightness:0.72f alpha:1.00f]];
-	[endColors addObject: [UIColor colorWithHue:0.07f saturation:0.61f brightness:0.84f alpha:1.00f]];
-	dict = @{ @"h" : @14958, @"s" : @241, @"b" : @255 };
-	[hues addObject:dict];
-	
-	// 9
-	[startColors addObject: [UIColor colorWithHue:0.62f saturation:0.36f brightness:0.77f alpha:1.00f]];
-	[endColors addObject: [UIColor colorWithHue:0.07f saturation:0.51f brightness:0.84f alpha:1.00f]];
-	dict = @{ @"h" : @14133, @"s" : @179, @"b" : @255 };
-	[hues addObject:dict];
-	
-	// 10
-	[startColors addObject: [UIColor colorWithHue:0.62f saturation:0.40f brightness:0.89f alpha:1.00f]];
-	[endColors addObject: [UIColor colorWithHue:0.08f saturation:0.38f brightness:0.82f alpha:1.00f]];
-	dict = @{ @"h" : @15894, @"s" : @83, @"b" : @255 };
-	[hues addObject:dict];
-	
-	// 11
-	[startColors addObject: [UIColor colorWithHue:0.62f saturation:0.39f brightness:0.98f alpha:1.00f]];
-	[endColors addObject: [UIColor colorWithHue:0.08f saturation:0.11f brightness:0.81f alpha:1.00f]];
-	dict = @{ @"h" : @16350, @"s" : @45, @"b" : @255 };
-	[hues addObject:dict];
-	
-	// 12
-	[startColors addObject: [UIColor colorWithHue:0.61f saturation:0.36f brightness:1.00f alpha:1.00f]];
-	[endColors addObject: [UIColor colorWithHue:0.60f saturation:0.08f brightness:0.85f alpha:1.00f]];
-	dict = @{ @"h" : @33837, @"s" : @10, @"b" : @255 };
-	[hues addObject:dict];
-	
-	
-	// 13
-	[startColors addObject: [UIColor colorWithHue:0.61f saturation:0.41f brightness:1.00f alpha:1.00f]];
-	[endColors addObject: [UIColor colorWithHue:0.61f saturation:0.19f brightness:0.93f alpha:1.00f]];
-	dict = @{ @"h" : @34515, @"s" : @236, @"b" : @255 };
-	[hues addObject:dict];
-	
-	// 14 day
-	[startColors addObject: [UIColor colorWithHue:0.61f saturation:0.42f brightness:1.00f alpha:1.00f]];
-	[endColors addObject: [UIColor colorWithHue:0.61f saturation:0.27f brightness:0.99f alpha:1.00f]];
-	dict = @{ @"h" : @34515, @"s" : @236, @"b" : @255 };
-	[hues addObject:dict];
+	[self initColorArrays];
 	
     sky.startColor = [startColors objectAtIndex:14];
     sky.endColor = [endColors objectAtIndex:14];
@@ -216,8 +123,6 @@ NSString *host;
 	
 }
 
-
-
 - (void) tick
 {
 	currentMinute = currentMinute + 1;
@@ -231,10 +136,6 @@ NSString *host;
 	[self animateMoonSun];
 }
 
-float lastX;
-int currentMinute;
-BOOL isPanning;
-
 - (void)onPan:(UIPanGestureRecognizer *)recognizer {
 
 	if(recognizer.state == UIGestureRecognizerStateEnded)
@@ -242,8 +143,8 @@ BOOL isPanning;
 		lastX = 0.0f;
 		isPanning = NO;
 		oldIndex = -1;
-		daylightSet = NO;
-		nightlightSet = NO;
+		isDayLightSet = NO;
+		isNightLightSet = NO;
 	}
 	else
 	{
@@ -280,7 +181,6 @@ BOOL isPanning;
 			[self animateMoonSun];
 		}
 	}
-	
 }
 
 
@@ -303,16 +203,9 @@ BOOL isPanning;
 			{
 				currentMinute+=2;
 			}
-			
 		}
 	}
-	
 }
-
-
-int oldIndex = -1;
-bool daylightSet = NO;
-bool nightlightSet = NO;
 
 - (void) animateMoonSun
 {
@@ -328,12 +221,11 @@ bool nightlightSet = NO;
 		sky.endColor = [endColors objectAtIndex:14];
 		[self positionSun:percentComplete];
 		
-		if (!daylightSet)
+		if (!isDayLightSet)
 		{
 			[self changeHueWithIndex:14];
-			daylightSet = YES;
+			isDayLightSet = YES;
 		}
-		
 	}
 	
 	if ([dayPart isEqualToString:dayPartNight])
@@ -344,10 +236,10 @@ bool nightlightSet = NO;
 		sky.endColor = [endColors objectAtIndex:0];
 		[self positionMoon:percentComplete];
 		
-		if (!nightlightSet)
+		if (!isNightLightSet)
 		{
 			[self changeHueWithIndex:0];
-			nightlightSet = YES;
+			isNightLightSet = YES;
 		}
 	}
 	
@@ -368,8 +260,8 @@ bool nightlightSet = NO;
 		self.sun.alpha = 0;
 		self.moon.alpha = 0;
 		
-		daylightSet = NO;
-		nightlightSet = NO;
+		isDayLightSet = NO;
+		isNightLightSet = NO;
 	}
 	
 	if ([dayPart isEqualToString:dayPartSunset])
@@ -388,11 +280,9 @@ bool nightlightSet = NO;
 		self.sun.alpha = 0;
 		self.moon.alpha = 0;
 		
-		daylightSet = NO;
-		nightlightSet = NO;
+		isDayLightSet = NO;
+		isNightLightSet = NO;
 	}
-	
-
 }
 
 - (void) changeHueWithIndex:(int)index
@@ -406,14 +296,11 @@ bool nightlightSet = NO;
 		 for that light and push it onto display
 		 *****************************************************/
 		
-		
 		for (int i = 0; i < [sortedKeys count]; i++)
 		{
 			// Get light
 			self.light = [self.lights objectForKey:[sortedKeys objectAtIndex:i]];
-			
-			
-			
+
 			PHLightState *lightState = [[PHLightState alloc] init];
 			
 			int valueTransitionTime = 10;
@@ -422,14 +309,8 @@ bool nightlightSet = NO;
 			
 			[lightState setHue:[dict objectForKey:@"h"]];
 			[lightState setSaturation:[dict objectForKey:@"s"]];
-			
 			[lightState setBrightness:[dict objectForKey:@"b"]];
-			
-			
 			[lightState setTransitionTime:[NSNumber numberWithInt:valueTransitionTime]];
-			
-			
-			
 			
 			/***************************************************
 			 The BridgeSendAPI is used to send commands to the bridge.
@@ -460,10 +341,8 @@ bool nightlightSet = NO;
 	
 }
 
-
-
 /**
- Gets the list of lights from the cache and updates the tableview
+ Gets the list of lights from the cache 
  */
 - (void)updateLights {
     /***************************************************
@@ -476,10 +355,7 @@ bool nightlightSet = NO;
     // Gets lights from cache
     PHBridgeResourcesCache *cache = [PHBridgeResourcesReader readBridgeResourcesCache];
     self.lights = cache.lights;
-
-	
 }
-
 
 
 -(void) positionSun:(double)percentComplete
@@ -495,8 +371,6 @@ bool nightlightSet = NO;
 	sunFrame.origin.y = y - (sunFrame.size.height / 2) + verticalOffset;
 	
 	self.sun.frame = sunFrame;
-	
-	
 }
 
 -(void) positionMoon:(double)percentComplete
@@ -511,10 +385,7 @@ bool nightlightSet = NO;
 	moonFrame.origin.y = y - (moonFrame.size.height / 2) + verticalOffset;
 	
 	self.moon.frame = moonFrame;
-	
 }
-
-
 
 - (int) secondsIntoDayPart:(NSString*)dayPart
 {
@@ -629,19 +500,12 @@ bool nightlightSet = NO;
 	self.hueErrorLogTextView.text = [NSString stringWithFormat:@"%@\n%@", self.hueErrorLogTextView.text, message];
 }
 
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 - (void) didChangeTime:(int)minutes
 {
 	currentMinute = minutes;
 	oldIndex = -1;
-	daylightSet = NO;
-	nightlightSet = NO;
+	isDayLightSet = NO;
+	isNightLightSet = NO;
 	[self positionMoon:0];
 	[self positionSun:0];
 	[self animateMoonSun];
@@ -651,6 +515,8 @@ bool nightlightSet = NO;
 {
 	self.hueErrorLogView.alpha = 1;
 }
+
+#pragma mark - Button Actions
 
 - (IBAction)configButtonTouched:(UIButton *)sender {
 	
@@ -663,8 +529,22 @@ bool nightlightSet = NO;
 		[slideMenuController showMenuAnimated:YES completion:nil];
 	}
 }
+
 - (IBAction)closeHueLogButtonTapped:(UIButton *)sender {
 	self.hueErrorLogView.alpha = 0;
+}
+
+- (IBAction)lockButtonTapped:(UIButton *)sender {
+	
+	if (isTimeLocked) {
+		[self.lockButton setImage:[UIImage imageNamed:@"unlocked"] forState:UIControlStateNormal];
+		isTimeLocked = NO;
+	}
+	else
+	{
+		[self.lockButton setImage:[UIImage imageNamed:@"locked"] forState:UIControlStateNormal];
+		isTimeLocked = YES;
+	}
 }
 
 #pragma mark - Rotation
@@ -691,22 +571,116 @@ bool nightlightSet = NO;
 }
 
 
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
 - (void)viewDidUnload {
     [self setLockButton:nil];
     [super viewDidUnload];
 }
-- (IBAction)lockButtonTapped:(UIButton *)sender {
-	
-	if (isTimeLocked) {
-		[self.lockButton setImage:[UIImage imageNamed:@"unlocked"] forState:UIControlStateNormal];
-		isTimeLocked = NO;
-	}
-	else
-	{
-		[self.lockButton setImage:[UIImage imageNamed:@"locked"] forState:UIControlStateNormal];
-		isTimeLocked = YES;
-	}
+
+#pragma mark - Initialization Code
+
+- (void) initColorArrays {
+	NSDictionary *dict;
+	startColors = [NSMutableArray array];
+	endColors = [NSMutableArray array];
+	hues = [NSMutableArray array];
 	
 	
+	// 0 night
+	[startColors addObject: [UIColor colorWithHue:0.84f saturation:0.68f brightness:0.00f alpha:1.00f]];
+	[endColors addObject: [UIColor colorWithHue:0.66f saturation:0.71f brightness:0.04f alpha:1.00f]];
+	dict = @{ @"h" : @47103, @"s" : @254, @"b" : @61 };
+	[hues addObject:dict];
+	
+	// 1
+	[startColors addObject: [UIColor colorWithHue:0.84f saturation:0.68f brightness:0.00f alpha:1.00f]];
+	[endColors addObject: [UIColor colorWithHue:0.97f saturation:0.59f brightness:0.18f alpha:1.00f]];
+	dict = @{ @"h" : @272, @"s" : @234, @"b" : @10 };
+	[hues addObject:dict];
+	
+	// 2
+	[startColors addObject: [UIColor colorWithHue:0.84f saturation:0.68f brightness:0.00f alpha:1.00f]];
+	[endColors addObject: [UIColor colorWithHue:0.00f saturation:0.65f brightness:0.37f alpha:1.00f]];
+	dict = @{ @"h" : @272, @"s" : @234, @"b" : @70 };
+	[hues addObject:dict];
+	
+	// 3
+	[startColors addObject: [UIColor colorWithHue:0.88f saturation:0.51f brightness:0.13f alpha:1.00f]];
+	[endColors addObject: [UIColor colorWithHue:0.01f saturation:0.60f brightness:0.55f alpha:1.00f]];
+	dict = @{ @"h" : @272, @"s" : @234, @"b" : @140 };
+	[hues addObject:dict];
+	
+	// 4
+	[startColors addObject: [UIColor colorWithHue:0.66f saturation:0.24f brightness:0.28f alpha:1.00f]];
+	[endColors addObject: [UIColor colorWithHue:0.03f saturation:0.65f brightness:0.71f alpha:1.00f]];
+	dict = @{ @"h" : @5237, @"s" : @242, @"b" : @180 };
+	[hues addObject:dict];
+	
+	// 5
+	[startColors addObject: [UIColor colorWithHue:0.65f saturation:0.31f brightness:0.40f alpha:1.00f]];
+	[endColors addObject: [UIColor colorWithHue:0.04f saturation:0.66f brightness:0.78f alpha:1.00f]];
+	dict = @{ @"h" : @4948, @"s" : @241, @"b" : @255 };
+	[hues addObject:dict];
+	
+	// 6
+	[startColors addObject: [UIColor colorWithHue:0.66f saturation:0.28f brightness:0.49f alpha:1.00f]];
+	[endColors addObject: [UIColor colorWithHue:0.05f saturation:0.68f brightness:0.83f alpha:1.00f]];
+	dict = @{ @"h" : @9940, @"s" : @239, @"b" : @255 };
+	[hues addObject:dict];
+	
+	// 7
+	[startColors addObject: [UIColor colorWithHue:0.64f saturation:0.32f brightness:0.60f alpha:1.00f]];
+	[endColors addObject: [UIColor colorWithHue:0.06f saturation:0.69f brightness:0.86f alpha:1.00f]];
+	dict = @{ @"h" : @10470, @"s" : @171, @"b" : @255 };
+	[hues addObject:dict];
+	
+	// 8
+	[startColors addObject: [UIColor colorWithHue:0.62f saturation:0.42f brightness:0.72f alpha:1.00f]];
+	[endColors addObject: [UIColor colorWithHue:0.07f saturation:0.61f brightness:0.84f alpha:1.00f]];
+	dict = @{ @"h" : @14958, @"s" : @241, @"b" : @255 };
+	[hues addObject:dict];
+	
+	// 9
+	[startColors addObject: [UIColor colorWithHue:0.62f saturation:0.36f brightness:0.77f alpha:1.00f]];
+	[endColors addObject: [UIColor colorWithHue:0.07f saturation:0.51f brightness:0.84f alpha:1.00f]];
+	dict = @{ @"h" : @14133, @"s" : @179, @"b" : @255 };
+	[hues addObject:dict];
+	
+	// 10
+	[startColors addObject: [UIColor colorWithHue:0.62f saturation:0.40f brightness:0.89f alpha:1.00f]];
+	[endColors addObject: [UIColor colorWithHue:0.08f saturation:0.38f brightness:0.82f alpha:1.00f]];
+	dict = @{ @"h" : @15894, @"s" : @83, @"b" : @255 };
+	[hues addObject:dict];
+	
+	// 11
+	[startColors addObject: [UIColor colorWithHue:0.62f saturation:0.39f brightness:0.98f alpha:1.00f]];
+	[endColors addObject: [UIColor colorWithHue:0.08f saturation:0.11f brightness:0.81f alpha:1.00f]];
+	dict = @{ @"h" : @16350, @"s" : @45, @"b" : @255 };
+	[hues addObject:dict];
+	
+	// 12
+	[startColors addObject: [UIColor colorWithHue:0.61f saturation:0.36f brightness:1.00f alpha:1.00f]];
+	[endColors addObject: [UIColor colorWithHue:0.60f saturation:0.08f brightness:0.85f alpha:1.00f]];
+	dict = @{ @"h" : @33837, @"s" : @10, @"b" : @255 };
+	[hues addObject:dict];
+	
+	
+	// 13
+	[startColors addObject: [UIColor colorWithHue:0.61f saturation:0.41f brightness:1.00f alpha:1.00f]];
+	[endColors addObject: [UIColor colorWithHue:0.61f saturation:0.19f brightness:0.93f alpha:1.00f]];
+	dict = @{ @"h" : @34515, @"s" : @236, @"b" : @255 };
+	[hues addObject:dict];
+	
+	// 14 day
+	[startColors addObject: [UIColor colorWithHue:0.61f saturation:0.42f brightness:1.00f alpha:1.00f]];
+	[endColors addObject: [UIColor colorWithHue:0.61f saturation:0.27f brightness:0.99f alpha:1.00f]];
+	dict = @{ @"h" : @34515, @"s" : @236, @"b" : @255 };
+	[hues addObject:dict];
 }
+
 @end
