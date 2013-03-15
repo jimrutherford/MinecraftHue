@@ -36,7 +36,6 @@
 
 @property (nonatomic, strong) PHLight *light;
 @property (nonatomic, strong) NSDictionary *lights;
-
 @end
 
 @implementation ViewController
@@ -47,6 +46,7 @@
 @synthesize endColors;
 @synthesize hues;
 @synthesize slideMenuController;
+@synthesize isTimeLocked;
 
 float minutesInPixel;
 
@@ -60,6 +60,7 @@ NSString *host;
 	
 	AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
 	
+	isTimeLocked = NO;
 	
 	[self updateLights];
 	// Add notification listener for cache update of lights
@@ -236,28 +237,31 @@ BOOL isPanning;
 	}
 	else
 	{
-		isPanning = YES;
-		CGPoint point = [recognizer translationInView:self.view];
-		
-		float currentX = point.x;
-		float changeInX = currentX - lastX;
-		
-		currentMinute = currentMinute + changeInX;
-		if (currentMinute < 0)
+		if (!isTimeLocked)
 		{
-			currentMinute = totalMinutes;
+			isPanning = YES;
+			CGPoint point = [recognizer translationInView:self.view];
+			
+			float currentX = point.x;
+			float changeInX = currentX - lastX;
+			
+			currentMinute = currentMinute + changeInX;
+			if (currentMinute < 0)
+			{
+				currentMinute = totalMinutes;
+			}
+			
+			if (currentMinute > totalMinutes)
+			{
+				currentMinute = 0;
+			}
+			
+			lastX = currentX;
+			
+			[self updateTimeLabel];
+			
+			[self animateMoonSun];
 		}
-		
-		if (currentMinute > totalMinutes)
-		{
-			currentMinute = 0;
-		}
-		
-		lastX = currentX;
-		
-		[self updateTimeLabel];
-        
-		[self animateMoonSun];
 	}
 	
 }
@@ -643,4 +647,22 @@ bool nightlightSet = NO;
 }
 
 
+- (void)viewDidUnload {
+    [self setLockButton:nil];
+    [super viewDidUnload];
+}
+- (IBAction)lockButtonTapped:(UIButton *)sender {
+	
+	if (isTimeLocked) {
+		[self.lockButton setImage:[UIImage imageNamed:@"unlocked"] forState:UIControlStateNormal];
+		isTimeLocked = NO;
+	}
+	else
+	{
+		[self.lockButton setImage:[UIImage imageNamed:@"locked"] forState:UIControlStateNormal];
+		isTimeLocked = YES;
+	}
+	
+	
+}
 @end

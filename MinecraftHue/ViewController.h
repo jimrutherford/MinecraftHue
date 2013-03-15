@@ -14,7 +14,7 @@
 @interface ViewController : UIViewController<SettingsViewControllerDelegate>
 
 @property (nonatomic, strong) NSTimer *timer;
-
+@property (nonatomic) BOOL isTimeLocked;
 @property (nonatomic, strong) NSString *foundHueHost;
 
 @property (weak, nonatomic) IBOutlet UIImageView *moon;
@@ -34,5 +34,8 @@
 @property (weak, nonatomic) IBOutlet UIView *hueErrorLogView;
 @property (weak, nonatomic) IBOutlet UITextView *hueErrorLogTextView;
 - (IBAction)closeHueLogButtonTapped:(UIButton *)sender;
+
+@property (weak, nonatomic) IBOutlet UIButton *lockButton;
+- (IBAction)lockButtonTapped:(UIButton *)sender;
 
 @end
