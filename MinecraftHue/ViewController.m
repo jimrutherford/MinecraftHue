@@ -76,8 +76,16 @@ NSString *host;
 	UIPanGestureRecognizer *panGestureRecognizer = [[UIPanGestureRecognizer alloc]
                                                      initWithTarget:self
                                                      action:@selector(onPan:)];
-    //[oneFingerSwipeLeft setDirection:UISwipeGestureRecognizerDirectionLeft];
+    
     [[self view] addGestureRecognizer:panGestureRecognizer];
+
+	
+	UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc]
+													initWithTarget:self
+													action:@selector(onTap:)];
+    
+    [[self view] addGestureRecognizer:tapGestureRecognizer];
+	
 	
 	currentMinute = 0.0f;
 	[self updateTimeLabel];
@@ -204,6 +212,8 @@ NSString *host;
 								   userInfo:nil
 									repeats:YES];
 	
+	NSLog(@"Whitelist Username - %@", [PHUtilities whitelistIdentifier]);
+	
 }
 
 
@@ -272,6 +282,33 @@ BOOL isPanning;
 	}
 	
 }
+
+
+- (void)onTap:(UITapGestureRecognizer *)recognizer {
+
+	if (!isTimeLocked)
+	{
+		CGPoint screenPoint = [recognizer locationInView:self.view];
+		
+		if (screenPoint.y > 600)
+		{
+			// we're in the part of the screen where we want to process taps
+			
+			
+			if (screenPoint.x < self.lockButton.frame.origin.x - 40)
+			{
+				currentMinute-=2;
+			}
+			else if (screenPoint.x > self.timeLabel.frame.origin.x + self.timeLabel.frame.size.width + 40)
+			{
+				currentMinute+=2;
+			}
+			
+		}
+	}
+	
+}
+
 
 int oldIndex = -1;
 bool daylightSet = NO;
