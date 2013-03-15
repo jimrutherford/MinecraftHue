@@ -241,6 +241,13 @@ BOOL isPanning;
 		{
 			isPanning = YES;
 			CGPoint point = [recognizer translationInView:self.view];
+			CGPoint screenPoint = [recognizer locationInView:self.view];
+			
+			if (screenPoint.y  > 600)
+			{
+				isPanning = NO;
+				return;
+			}
 			
 			float currentX = point.x;
 			float changeInX = currentX - lastX;
