@@ -2,10 +2,10 @@
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="8.00">
 	<data>
 		<int key="IBDocument.SystemTarget">1552</int>
-		<string key="IBDocument.SystemVersion">12C60</string>
+		<string key="IBDocument.SystemVersion">12D78</string>
 		<string key="IBDocument.InterfaceBuilderVersion">3084</string>
-		<string key="IBDocument.AppKitVersion">1187.34</string>
-		<string key="IBDocument.HIToolboxVersion">625.00</string>
+		<string key="IBDocument.AppKitVersion">1187.37</string>
+		<string key="IBDocument.HIToolboxVersion">626.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 			<string key="NS.object.0">2083</string>
@@ -43,13 +43,14 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{40, 169}, {256, 256}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="89605649"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">Moon@2x.png</string>
+							<string key="NSResourceName">Moon.png</string>
 						</object>
 					</object>
 					<object class="IBUIImageView" id="391560060">
@@ -57,13 +58,14 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{683, 38}, {256, 256}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="547175592"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">Sun@2x.png</string>
+							<string key="NSResourceName">Sun.png</string>
 						</object>
 					</object>
 					<object class="IBUIImageView" id="547175592">
@@ -71,21 +73,22 @@
 						<int key="NSvFlags">274</int>
 						<string key="NSFrame">{{0, 414}, {1024, 334}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="9466661"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">appBG@2x.png</string>
+							<string key="NSResourceName">appBG.png</string>
 						</object>
 					</object>
 					<object class="IBUILabel" id="9466661">
 						<reference key="NSNextResponder" ref="766721923"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{10, 647}, {277, 88}}</string>
+						<string key="NSFrame">{{374, 647}, {277, 88}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
-						<reference key="NSNextKeyView"/>
+						<reference key="NSWindow"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -99,6 +102,7 @@
 						</object>
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">0</int>
+						<int key="IBUITextAlignment">1</int>
 						<object class="IBUIFontDescription" key="IBUIFontDescription">
 							<string key="name">HelveticaNeue-UltraLight</string>
 							<string key="family">Helvetica Neue</string>
@@ -117,6 +121,7 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{10, 12}, {26, 26}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="876081560"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -134,7 +139,7 @@
 						</object>
 						<object class="NSCustomResource" key="IBUINormalImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">config@2x.fw.png</string>
+							<string key="NSResourceName">config.png</string>
 						</object>
 						<object class="IBUIFontDescription" key="IBUIFontDescription">
 							<int key="type">2</int>
@@ -155,13 +160,14 @@
 								<int key="NSvFlags">274</int>
 								<string key="NSFrameSize">{399, 394}</string>
 								<reference key="NSSuperview" ref="89605649"/>
+								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="623437566"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 								<object class="NSCustomResource" key="IBUIImage">
 									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">HueLogDialog@2x.png</string>
+									<string key="NSResourceName">HueLogDialog.png</string>
 								</object>
 							</object>
 							<object class="IBUILabel" id="623437566">
@@ -169,6 +175,7 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{34, 10}, {330, 40}}</string>
 								<reference key="NSSuperview" ref="89605649"/>
+								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="726449407"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
@@ -208,6 +215,7 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{34, 66}, {330, 246}}</string>
 								<reference key="NSSuperview" ref="89605649"/>
+								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="391560060"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -236,6 +244,7 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{0, 288}, {128, 86}}</string>
 								<reference key="NSSuperview" ref="89605649"/>
+								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="351658546"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<int key="IBUIContentMode">1</int>
@@ -243,7 +252,7 @@
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 								<object class="NSCustomResource" key="IBUIImage">
 									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">toastIconHueError@2x.png</string>
+									<string key="NSResourceName">toastIconHueError.png</string>
 								</object>
 							</object>
 							<object class="IBUIButton" id="404607568">
@@ -251,6 +260,7 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{218, 320}, {161, 47}}</string>
 								<reference key="NSSuperview" ref="89605649"/>
+								<reference key="NSWindow"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -266,7 +276,7 @@
 								<reference key="IBUINormalTitleShadowColor" ref="822570059"/>
 								<object class="NSCustomResource" key="IBUINormalBackgroundImage">
 									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">WoolButton@2x.png</string>
+									<string key="NSResourceName">WoolButton.png</string>
 								</object>
 								<object class="IBUIFontDescription" key="IBUIFontDescription">
 									<string key="name">HelveticaNeue-Medium</string>
@@ -283,6 +293,7 @@
 						</array>
 						<string key="NSFrame">{{313, 100}, {399, 394}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="663041074"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<object class="NSColor" key="IBUIBackgroundColor">
@@ -294,6 +305,7 @@
 				</array>
 				<string key="NSFrame">{{0, 20}, {1024, 748}}</string>
 				<reference key="NSSuperview"/>
+				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="384215810"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">1</int>
@@ -412,9 +424,9 @@
 							<reference ref="391560060"/>
 							<reference ref="876081560"/>
 							<reference ref="547175592"/>
-							<reference ref="9466661"/>
 							<reference ref="384215810"/>
 							<reference ref="89605649"/>
+							<reference ref="9466661"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -509,19 +521,78 @@
 			<nil key="sourceID"/>
 			<int key="maxID">57</int>
 		</object>
-		<object class="IBClassDescriber" key="IBDocument.Classes"/>
+		<object class="IBClassDescriber" key="IBDocument.Classes">
+			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
+				<object class="IBPartialClassDescription">
+					<string key="className">ViewController</string>
+					<string key="superclassName">UIViewController</string>
+					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="closeHueLogButtonTapped:">UIButton</string>
+						<string key="configButtonTouched:">UIButton</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="closeHueLogButtonTapped:">
+							<string key="name">closeHueLogButtonTapped:</string>
+							<string key="candidateClassName">UIButton</string>
+						</object>
+						<object class="IBActionInfo" key="configButtonTouched:">
+							<string key="name">configButtonTouched:</string>
+							<string key="candidateClassName">UIButton</string>
+						</object>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="configButton">UIButton</string>
+						<string key="hueErrorLogTextView">UITextView</string>
+						<string key="hueErrorLogView">UIView</string>
+						<string key="moon">UIImageView</string>
+						<string key="sun">UIImageView</string>
+						<string key="timeLabel">UILabel</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="configButton">
+							<string key="name">configButton</string>
+							<string key="candidateClassName">UIButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="hueErrorLogTextView">
+							<string key="name">hueErrorLogTextView</string>
+							<string key="candidateClassName">UITextView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="hueErrorLogView">
+							<string key="name">hueErrorLogView</string>
+							<string key="candidateClassName">UIView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="moon">
+							<string key="name">moon</string>
+							<string key="candidateClassName">UIImageView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="sun">
+							<string key="name">sun</string>
+							<string key="candidateClassName">UIImageView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="timeLabel">
+							<string key="name">timeLabel</string>
+							<string key="candidateClassName">UILabel</string>
+						</object>
+					</dictionary>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/ViewController.h</string>
+					</object>
+				</object>
+			</array>
+		</object>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBIPadFramework</string>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="HueLogDialog@2x.png">{797, 787}</string>
-			<string key="Moon@2x.png">{362, 362}</string>
-			<string key="Sun@2x.png">{451, 442}</string>
-			<string key="WoolButton@2x.png">{322, 93}</string>
-			<string key="appBG@2x.png">{2048, 668}</string>
-			<string key="config@2x.fw.png">{52, 52}</string>
-			<string key="toastIconHueError@2x.png">{222, 187}</string>
+			<string key="HueLogDialog.png">{398, 393}</string>
+			<string key="Moon.png">{181, 181}</string>
+			<string key="Sun.png">{225, 221}</string>
+			<string key="WoolButton.png">{161, 46}</string>
+			<string key="appBG.png">{1024, 334}</string>
+			<string key="config.png">{26, 26}</string>
+			<string key="toastIconHueError.png">{111, 93}</string>
 		</dictionary>
 		<string key="IBCocoaTouchPluginVersion">2083</string>
 	</data>

@@ -84,8 +84,6 @@
      *****************************************************/
     
     [self enableLocalHeartbeat];
-
-	
 	
     return YES;
 }

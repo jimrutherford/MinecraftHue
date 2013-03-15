@@ -223,7 +223,7 @@
 
 - (BOOL)automaticallyForwardAppearanceAndRotationMethodsToChildViewControllers
 {
-	return NO;
+	return YES;
 }
 
 
@@ -231,34 +231,28 @@
 
 - (BOOL)shouldAutorotate
 {
-	return [self.menuViewController shouldAutorotate] && [self.contentViewController shouldAutorotate];
+	return YES;
 }
 
-
-- (NSUInteger)supportedInterfaceOrientations
+-(NSUInteger)supportedInterfaceOrientations
 {
-	return [self.menuViewController supportedInterfaceOrientations] & [self.contentViewController supportedInterfaceOrientations];
+	return UIInterfaceOrientationMaskLandscape;
 }
 
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation
 {
-	return	[self.menuViewController shouldAutorotateToInterfaceOrientation:toInterfaceOrientation] &&
-			[self.contentViewController shouldAutorotateToInterfaceOrientation:toInterfaceOrientation];
+	return UIInterfaceOrientationLandscapeRight;
 }
 
 
-- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-	if ([self isMenuOpen])
-	{
-		CGRect frame = self.contentViewController.view.frame;
-		frame.origin.x = [self offsetXWhenMenuIsOpen];
-		[UIView animateWithDuration:duration animations:^{
-			self.contentViewController.view.frame = frame;
-		}];
-	}
+	// Return YES for supported orientations
+	//return (interfaceOrientation == UIInterfaceOrientationLandscapeRight);
+	return UIInterfaceOrientationIsLandscape(interfaceOrientation);
 }
+
+
 
 
 #pragma mark - Shadow

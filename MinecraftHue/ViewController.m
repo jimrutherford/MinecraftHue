@@ -12,6 +12,8 @@
 #import	"AppDelegate.h"
 #import "NVSlideMenuController.h"
 #import "Toast+UIView.h"
+#import <HueSDK/SDK.h>
+
 
 #define totalMinutes 1440
 #define ScreenWidth [[UIScreen mainScreen] bounds].size.width
@@ -31,6 +33,9 @@
 #define verticalOffset 30
 
 @interface ViewController ()
+
+@property (nonatomic, strong) PHLight *light;
+@property (nonatomic, strong) NSDictionary *lights;
 
 @end
 
@@ -54,6 +59,12 @@ NSString *host;
     [super viewDidLoad];
 	
 	AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+	
+	
+	[self updateLights];
+	// Add notification listener for cache update of lights
+    [[PHNotificationManager defaultManager] registerObject:self withSelector:@selector(updateLights) forNotification:LIGHTS_CACHE_UPDATED_NOTIFICATION];
+	
 	
 	slideMenuController = appDelegate.slideMenuController;
 	slideMenuController.panGestureEnabled = NO;
@@ -183,7 +194,7 @@ NSString *host;
 	
     self.moon.alpha = 0;
 	self.sun.alpha = 0;
-
+	
 	[self animateMoonSun];
 	
 	[NSTimer scheduledTimerWithTimeInterval:.83
@@ -341,10 +352,87 @@ bool nightlightSet = NO;
 	
 	if (!isPanning)
 	{
-
+		NSArray *sortedKeys = [self.lights.allKeys sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
+		/***************************************************
+		 The user has selected a light, prepare the PHLightViewController
+		 for that light and push it onto display
+		 *****************************************************/
+		
+		
+		for (int i = 0; i < [sortedKeys count]; i++)
+		{
+			// Get light
+			self.light = [self.lights objectForKey:[sortedKeys objectAtIndex:i]];
+			
+			
+			
+			PHLightState *lightState = [[PHLightState alloc] init];
+			
+			int valueTransitionTime = 10;
+			
+			NSDictionary *dict = [hues objectAtIndex:index];
+			
+			[lightState setHue:[dict objectForKey:@"h"]];
+			[lightState setSaturation:[dict objectForKey:@"s"]];
+			
+			[lightState setBrightness:[dict objectForKey:@"b"]];
+			
+			
+			[lightState setTransitionTime:[NSNumber numberWithInt:valueTransitionTime]];
+			
+			
+			
+			
+			/***************************************************
+			 The BridgeSendAPI is used to send commands to the bridge.
+			 Here we are updating the settings chosen by the user
+			 for the selected light.
+			 These settings are sent as a PHLightState to update
+			 the light with the given light identifiers.
+			 Subsequent checking of the Bridge Resources cache after the next heartbeat will
+			 show that changed settings have occurred.
+			 *****************************************************/
+			
+			// Create a bridge send api, used for sending commands to bridge locally
+			id<PHBridgeSendAPI> bridgeSendAPI = [[[PHOverallFactory alloc] init] bridgeSendAPI];
+			
+			// Send lightstate to light
+			[bridgeSendAPI updateLightStateForId:self.light.identifier withLighState:lightState completionHandler:^(NSArray *errors) {
+				// Check for errors
+				if (errors != nil) {
+					
+					for (PHError *error in errors) {
+							// Error occured
+						[self logHueError:error.description];
+					}
+				}
+			}];
+		}
 	}
 	
 }
+
+
+
+/**
+ Gets the list of lights from the cache and updates the tableview
+ */
+- (void)updateLights {
+    /***************************************************
+     The notification of changes to the lights information
+     in the Bridge resources cache called this method.
+     Now we access Bridge resources cache to get updated
+     information and reload the displayed lights table.
+     *****************************************************/
+	
+    // Gets lights from cache
+    PHBridgeResourcesCache *cache = [PHBridgeResourcesReader readBridgeResourcesCache];
+    self.lights = cache.lights;
+
+	
+}
+
+
 
 -(void) positionSun:(double)percentComplete
 {
@@ -530,4 +618,29 @@ bool nightlightSet = NO;
 - (IBAction)closeHueLogButtonTapped:(UIButton *)sender {
 	self.hueErrorLogView.alpha = 0;
 }
+
+#pragma mark - Rotation
+
+- (BOOL)shouldAutorotate
+{
+	return YES;
+}
+
+-(NSUInteger)supportedInterfaceOrientations
+{
+	return UIInterfaceOrientationMaskLandscape;
+}
+
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation
+{
+	return UIInterfaceOrientationLandscapeRight;
+}
+
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+	return UIInterfaceOrientationIsLandscape(interfaceOrientation);
+}
+
+
 @end
