@@ -226,7 +226,7 @@
                 
                 // Show loading view while saving
                 self.loadingView = [[PHLoadingViewController alloc] initWithNibName:@"PHLoadingViewController" bundle:[NSBundle mainBundle]];
-                self.loadingView.loadingLabel.text = NSLocalizedString(@"Saving...", @"Change light name save text");
+                //self.loadingView.loadingLabel.text = NSLocalizedString(@"Saving...", @"Change light name save text");
                 self.loadingView.view.frame = self.view.bounds;
                 [self.view addSubview:self.loadingView.view];
                 

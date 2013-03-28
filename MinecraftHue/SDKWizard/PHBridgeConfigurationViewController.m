@@ -261,7 +261,7 @@
     
     // Show saving overlay
     self.loadingView = [[PHLoadingViewController alloc] initWithNibName:@"PHLoadingViewController" bundle:[NSBundle mainBundle]];
-    self.loadingView.loadingLabel.text = NSLocalizedString(@"Saving...", @"Change light name save text");
+    //self.loadingView.loadingLabel.text = NSLocalizedString(@"Saving...", @"Change light name save text");
     self.loadingView.view.frame = self.view.bounds;
     [self.view addSubview:self.loadingView.view];
     
@@ -542,7 +542,7 @@
 - (void)softwareUpdateStarted {
     // Show saving overlay
     self.loadingView = [[PHLoadingViewController alloc] initWithNibName:@"PHLoadingViewController" bundle:[NSBundle mainBundle]];
-    self.loadingView.loadingLabel.text = NSLocalizedString(@"Updating...", @"Updating loading view text");
+    //self.loadingView.loadingLabel.text = NSLocalizedString(@"Updating...", @"Updating loading view text");
     self.loadingView.view.frame = self.navigationController.view.bounds;
     [self.navigationController.view addSubview:self.loadingView.view];
 }

@@ -20,7 +20,7 @@
     if (self) {
         // Make it a form on iPad
         self.modalPresentationStyle = UIModalPresentationFormSheet;
-        
+        //self.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
         self.phHueSDK = hueSdk;
         self.delegate = delegate;
     }
@@ -29,6 +29,9 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+	self.view.superview.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
+	self.view.superview.frame = CGRectMake(0, 0, 398, 393);
+	self.view.superview.backgroundColor = [UIColor clearColor];
 }
 
 - (void)viewDidLoad {
@@ -138,25 +141,25 @@
 
 #pragma mark - Rotation
 
-- (BOOL)shouldAutorotate
-{
-	return YES;
-}
-
--(NSUInteger)supportedInterfaceOrientations
-{
-	return UIInterfaceOrientationMaskLandscape;
-}
-
-- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation
-{
-	return UIInterfaceOrientationLandscapeRight;
-}
-
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-	return UIInterfaceOrientationIsLandscape(interfaceOrientation);
-}
+//- (BOOL)shouldAutorotate
+//{
+//	return NO;
+//}
+//
+//-(NSUInteger)supportedInterfaceOrientations
+//{
+//	return UIInterfaceOrientationMaskLandscape;
+//}
+//
+//- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation
+//{
+//	return UIInterfaceOrientationLandscapeRight;
+//}
+//
+//
+//- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+//{
+//	return UIInterfaceOrientationIsLandscape(interfaceOrientation);
+//}
 
 @end

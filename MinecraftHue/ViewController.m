@@ -119,8 +119,6 @@ BOOL isPanning;
 								   userInfo:nil
 									repeats:YES];
 	
-	NSLog(@"Whitelist Username - %@", [PHUtilities whitelistIdentifier]);
-	
 }
 
 - (void) tick

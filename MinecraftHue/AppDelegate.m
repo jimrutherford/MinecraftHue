@@ -65,6 +65,16 @@
 	
     [self.window makeKeyAndVisible];
 	
+	
+	NSLog(@"Whitelist Username - %@", [PHUtilities whitelistIdentifier]);
+	
+	// Invoke the search command
+    id<PHBridgeSendAPI> bridgeSendAPI = [[[PHOverallFactory alloc] init] bridgeSendAPI];
+    [bridgeSendAPI removeWhitelistEntryWithUsername:[PHUtilities whitelistIdentifier]  completionHandler:^(NSArray *errors) {
+		NSLog(@"User Removed!!!!!!!");
+	}];
+
+	
 	// Listen for notifications
     PHNotificationManager *notificationManager = [PHNotificationManager defaultManager];
     /***************************************************
@@ -146,7 +156,7 @@
     self.loadingView = [[PHLoadingViewController alloc] initWithNibName:@"PHLoadingViewController" bundle:[NSBundle mainBundle]];
     self.loadingView.view.frame = self.contentViewController.view.bounds;
     [self.contentViewController.view addSubview:self.loadingView.view];
-    self.loadingView.loadingLabel.text = text;
+    //self.loadingView.loadingLabel.text = text;
 }
 
 /**
