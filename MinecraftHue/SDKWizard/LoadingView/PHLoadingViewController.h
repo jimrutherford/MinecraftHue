@@ -13,6 +13,7 @@
 /**
  The label shown below the loading spinner
  */
-@property (unsafe_unretained, nonatomic) IBOutlet UILabel *loadingLabel;
+
+@property (weak, nonatomic) IBOutlet UIImageView *searchingImageView;
 
 @end

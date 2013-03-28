@@ -34,7 +34,7 @@
 }
 
 - (void)viewDidUnload {
-    [self setLoadingLabel:nil];
+    [self setSearchingImageView:nil];
     [super viewDidUnload];
 }
 @end
